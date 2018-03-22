@@ -67,12 +67,72 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// test_dlst
+List test_dlst(NumericVector x, double df, double mu, double sigma);
+RcppExport SEXP _RcppDist_test_dlst(SEXP xSEXP, SEXP dfSEXP, SEXP muSEXP, SEXP sigmaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type df(dfSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_dlst(x, df, mu, sigma));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_plst
+List test_plst(NumericVector x, double df, double mu, double sigma);
+RcppExport SEXP _RcppDist_test_plst(SEXP xSEXP, SEXP dfSEXP, SEXP muSEXP, SEXP sigmaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type df(dfSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_plst(x, df, mu, sigma));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_qlst_nolog
+List test_qlst_nolog(NumericVector x, double df, double mu, double sigma);
+RcppExport SEXP _RcppDist_test_qlst_nolog(SEXP xSEXP, SEXP dfSEXP, SEXP muSEXP, SEXP sigmaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type df(dfSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_qlst_nolog(x, df, mu, sigma));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_qlst_log
+List test_qlst_log(NumericVector x, double df, double mu, double sigma);
+RcppExport SEXP _RcppDist_test_qlst_log(SEXP xSEXP, SEXP dfSEXP, SEXP muSEXP, SEXP sigmaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type df(dfSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_qlst_log(x, df, mu, sigma));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_RcppDist_test_d4beta", (DL_FUNC) &_RcppDist_test_d4beta, 5},
     {"_RcppDist_test_p4beta", (DL_FUNC) &_RcppDist_test_p4beta, 5},
     {"_RcppDist_test_q4beta_nolog", (DL_FUNC) &_RcppDist_test_q4beta_nolog, 5},
     {"_RcppDist_test_q4beta_log", (DL_FUNC) &_RcppDist_test_q4beta_log, 5},
+    {"_RcppDist_test_dlst", (DL_FUNC) &_RcppDist_test_dlst, 4},
+    {"_RcppDist_test_plst", (DL_FUNC) &_RcppDist_test_plst, 4},
+    {"_RcppDist_test_qlst_nolog", (DL_FUNC) &_RcppDist_test_qlst_nolog, 4},
+    {"_RcppDist_test_qlst_log", (DL_FUNC) &_RcppDist_test_qlst_log, 4},
     {NULL, NULL, 0}
 };
 

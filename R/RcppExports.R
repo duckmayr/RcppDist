@@ -17,3 +17,19 @@ test_q4beta_log <- function(x, shape1, shape2, a, b) {
     .Call('_RcppDist_test_q4beta_log', PACKAGE = 'RcppDist', x, shape1, shape2, a, b)
 }
 
+test_dlst <- function(x, df, mu, sigma) {
+    .Call('_RcppDist_test_dlst', PACKAGE = 'RcppDist', x, df, mu, sigma)
+}
+
+test_plst <- function(x, df, mu, sigma) {
+    .Call('_RcppDist_test_plst', PACKAGE = 'RcppDist', x, df, mu, sigma)
+}
+
+test_qlst_nolog <- function(x, df, mu, sigma) {
+    .Call('_RcppDist_test_qlst_nolog', PACKAGE = 'RcppDist', x, df, mu, sigma)
+}
+
+test_qlst_log <- function(x, df, mu, sigma) {
+    .Call('_RcppDist_test_qlst_log', PACKAGE = 'RcppDist', x, df, mu, sigma)
+}
+

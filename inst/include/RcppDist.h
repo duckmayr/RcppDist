@@ -8,5 +8,6 @@
 #endif
 
 #include <4beta.h>
+#include <lst.h>
 
 #endif
