@@ -34,5 +34,5 @@
 #' @importFrom Rcpp sourceCpp
 NULL
 .onUnload <- function (libpath) {
-    library.dynam.unload('ggum', libpath)
+    library.dynam.unload('RcppDist', libpath)
 }
