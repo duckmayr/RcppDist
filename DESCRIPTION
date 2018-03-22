@@ -1,0 +1,33 @@
+Package: RcppDist
+Title: 'Rcpp' Integration of Additional Probability Distributions
+Version: 0.0.0.9000
+Authors@R: person(given = "JB",
+                  family = "Duck-Mayr",
+                  email = "j.duckmayr@gmail.com",
+                  role = c("aut", "cre"))
+Description: The Rcpp package provides a C++ library to make it easier
+    to use C++ with R. R and Rcpp provide functions for a variety of
+    statistical distributions. Several R packages make functions
+    available to R for additional statistical distributions. However,
+    to access these functions from C++ code, a costly call to the R
+    functions must be made. RcppDist provides a C++ library with
+    functions for additional statistical distributions that can be
+    called from C++ when writing code using Rcpp or RcppArmadillo.
+    Functions are available that return NumericVectors as well as
+    doubles, and for multivariate or matrix distributions, Armadillo
+    vectors and matrices. RcppDist provides functions for the following
+    distributions: the four parameter beta distribution; the location-
+    scale t distribution; the truncated normal distribution; the
+    truncated t distribution; a truncated location-scale t distribution;
+    the triangle distribution; the multivariate normal distribution*;
+    the multivariate t distribution*; the Wishart distribution*; and
+    the inverse Wishart distribution*. Distributions marked with an
+    asterisk rely on RcppArmadillo.
+Depends: R (>= 3.0.0)
+License: GPL (>= 2.0)
+Encoding: UTF-8
+LazyData: true
+LinkingTo: Rcpp,
+    RcppArmadillo
+Imports: Rcpp
+RoxygenNote: 6.0.1
