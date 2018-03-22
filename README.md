@@ -1,5 +1,7 @@
 # RcppDist
 
+[![Travis-CI Build Status](https://travis-ci.org/duckmayr/RcppDist.svg?branch=master)](https://travis-ci.org/duckmayr/RcppDist)
+
 The [Rcpp package](https://github.com/RcppCore/Rcpp) provides a C++ library to make it easier to use C++ with R. R and Rcpp provide functions for a variety of statistical distributions. Several R packages make functions available to R for additional statistical distributions. However, to access these functions from C++ code, a costly call to the R functions must be made.
 
 **RcppDist** provides a C++ library with functions for additional statistical distributions that can be called from C++ when writing code using Rcpp or [RcppArmadillo](https://github.com/RcppCore/RcppArmadillo). Functions are available that return NumericVectors as well as doubles, and for multivariate or matrix distributions, Armadillo vectors and matrices.
