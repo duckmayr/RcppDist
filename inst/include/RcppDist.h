@@ -7,4 +7,6 @@
     #include <RcppArmadillo.h>
 #endif
 
+#include <4beta.h>
+
 #endif
