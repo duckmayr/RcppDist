@@ -53,7 +53,8 @@ List test_q4beta_log(NumericVector x, double shape1, double shape2,
 }
 
 
-// LOCATION SCALE T DISTRIBUTION
+
+// LOCATION-SCALE T DISTRIBUTION
 
 // [[Rcpp::export]]
 List test_dlst(NumericVector x, double df, double mu, double sigma) {
@@ -98,6 +99,8 @@ List test_qlst_log(NumericVector x, double df, double mu, double sigma) {
         _["DoubleLogNoLower"] = q_lst(x[0], df, mu, sigma, 0, 1)
     );
 }
+
+
 
 // TRUNCATED NORMAL DISTRIBUTION
 
@@ -149,6 +152,8 @@ List test_qtruncnorm_log(NumericVector x, double mu, double sigma,
     );
 }
 
+
+
 // TRUNCATED T DISTRIBUTION
 
 // [[Rcpp::export]]
@@ -192,5 +197,57 @@ List test_qtrunct_log(NumericVector x, double df, double a, double b) {
         _["DoubleLog"] = q_trunct(x[0], df, a, b, 1, 1),
         _["VectorLogNoLower"] = qtrunct(x, df, a, b, false, true),
         _["DoubleLogNoLower"] = q_trunct(x[0], df, a, b, 0, 1)
+    );
+}
+
+
+
+// TRUNCATED LOCATION-SCALE T DISTRIBUTION
+
+// [[Rcpp::export]]
+List test_dtrunclst(NumericVector x, double df, double mu, double sigma,
+        double a, double b) {
+    return List::create(
+        _["VectorLog"] = dtrunclst(x, df, mu, sigma, a, b, true),
+        _["VectorNoLog"] = dtrunclst(x, df, mu, sigma, a, b),
+        _["DoubleLog"] = d_trunclst(x[0], df, mu, sigma, a, b, 1),
+        _["DoubleNoLog"] = d_trunclst(x[0], df, mu, sigma, a, b)
+    );
+}
+
+// [[Rcpp::export]]
+List test_ptrunclst(NumericVector x, double df, double mu, double sigma,
+        double a, double b) {
+    return List::create(
+        _["VectorLog"] = ptrunclst(x, df, mu, sigma, a, b, true, true),
+        _["VectorNoLog"] = ptrunclst(x, df, mu, sigma, a, b),
+        _["DoubleLog"] = p_trunclst(x[0], df, mu, sigma, a, b, 1, 1),
+        _["DoubleNoLog"] = p_trunclst(x[0], df, mu, sigma, a, b),
+        _["VectorLogNoLower"] = ptrunclst(x, df, mu, sigma, a, b, false, true),
+        _["VectorNoLogNoLower"] = ptrunclst(x, df, mu, sigma, a, b, false),
+        _["DoubleLogNoLower"] = p_trunclst(x[0], df, mu, sigma, a, b, 0, 1),
+        _["DoubleNoLogNoLower"] = p_trunclst(x[0], df, mu, sigma, a, b, 0)
+    );
+}
+
+// [[Rcpp::export]]
+List test_qtrunclst_nolog(NumericVector x, double df, double mu, double sigma,
+        double a, double b) {
+    return List::create(
+        _["VectorNoLog"] = qtrunclst(x, df, mu, sigma, a, b),
+        _["DoubleNoLog"] = q_trunclst(x[0], df, mu, sigma, a, b),
+        _["VectorNoLogNoLower"] = qtrunclst(x, df, mu, sigma, a, b, false),
+        _["DoubleNoLogNoLower"] = q_trunclst(x[0], df, mu, sigma, a, b, 0)
+    );
+}
+
+// [[Rcpp::export]]
+List test_qtrunclst_log(NumericVector x, double df, double mu, double sigma,
+        double a, double b) {
+    return List::create(
+        _["VectorLog"] = qtrunclst(x, df, mu, sigma, a, b, true, true),
+        _["DoubleLog"] = q_trunclst(x[0], df, mu, sigma, a, b, 1, 1),
+        _["VectorLogNoLower"] = qtrunclst(x, df, mu, sigma, a, b, false, true),
+        _["DoubleLogNoLower"] = q_trunclst(x[0], df, mu, sigma, a, b, 0, 1)
     );
 }

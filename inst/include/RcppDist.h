@@ -11,5 +11,6 @@
 #include <lst.h>
 #include <truncnorm.h>
 #include <trunct.h>
+#include <trunclst.h>
 
 #endif

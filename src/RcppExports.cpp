@@ -239,6 +239,70 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// test_dtrunclst
+List test_dtrunclst(NumericVector x, double df, double mu, double sigma, double a, double b);
+RcppExport SEXP _RcppDist_test_dtrunclst(SEXP xSEXP, SEXP dfSEXP, SEXP muSEXP, SEXP sigmaSEXP, SEXP aSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type df(dfSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_dtrunclst(x, df, mu, sigma, a, b));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_ptrunclst
+List test_ptrunclst(NumericVector x, double df, double mu, double sigma, double a, double b);
+RcppExport SEXP _RcppDist_test_ptrunclst(SEXP xSEXP, SEXP dfSEXP, SEXP muSEXP, SEXP sigmaSEXP, SEXP aSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type df(dfSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_ptrunclst(x, df, mu, sigma, a, b));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_qtrunclst_nolog
+List test_qtrunclst_nolog(NumericVector x, double df, double mu, double sigma, double a, double b);
+RcppExport SEXP _RcppDist_test_qtrunclst_nolog(SEXP xSEXP, SEXP dfSEXP, SEXP muSEXP, SEXP sigmaSEXP, SEXP aSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type df(dfSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_qtrunclst_nolog(x, df, mu, sigma, a, b));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_qtrunclst_log
+List test_qtrunclst_log(NumericVector x, double df, double mu, double sigma, double a, double b);
+RcppExport SEXP _RcppDist_test_qtrunclst_log(SEXP xSEXP, SEXP dfSEXP, SEXP muSEXP, SEXP sigmaSEXP, SEXP aSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type df(dfSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_qtrunclst_log(x, df, mu, sigma, a, b));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_RcppDist_test_d4beta", (DL_FUNC) &_RcppDist_test_d4beta, 5},
@@ -257,6 +321,10 @@ static const R_CallMethodDef CallEntries[] = {
     {"_RcppDist_test_ptrunct", (DL_FUNC) &_RcppDist_test_ptrunct, 4},
     {"_RcppDist_test_qtrunct_nolog", (DL_FUNC) &_RcppDist_test_qtrunct_nolog, 4},
     {"_RcppDist_test_qtrunct_log", (DL_FUNC) &_RcppDist_test_qtrunct_log, 4},
+    {"_RcppDist_test_dtrunclst", (DL_FUNC) &_RcppDist_test_dtrunclst, 6},
+    {"_RcppDist_test_ptrunclst", (DL_FUNC) &_RcppDist_test_ptrunclst, 6},
+    {"_RcppDist_test_qtrunclst_nolog", (DL_FUNC) &_RcppDist_test_qtrunclst_nolog, 6},
+    {"_RcppDist_test_qtrunclst_log", (DL_FUNC) &_RcppDist_test_qtrunclst_log, 6},
     {NULL, NULL, 0}
 };
 
