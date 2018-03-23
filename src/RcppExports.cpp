@@ -183,6 +183,62 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// test_dtrunct
+List test_dtrunct(NumericVector x, double df, double a, double b);
+RcppExport SEXP _RcppDist_test_dtrunct(SEXP xSEXP, SEXP dfSEXP, SEXP aSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type df(dfSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_dtrunct(x, df, a, b));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_ptrunct
+List test_ptrunct(NumericVector x, double df, double a, double b);
+RcppExport SEXP _RcppDist_test_ptrunct(SEXP xSEXP, SEXP dfSEXP, SEXP aSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type df(dfSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_ptrunct(x, df, a, b));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_qtrunct_nolog
+List test_qtrunct_nolog(NumericVector x, double df, double a, double b);
+RcppExport SEXP _RcppDist_test_qtrunct_nolog(SEXP xSEXP, SEXP dfSEXP, SEXP aSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type df(dfSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_qtrunct_nolog(x, df, a, b));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_qtrunct_log
+List test_qtrunct_log(NumericVector x, double df, double a, double b);
+RcppExport SEXP _RcppDist_test_qtrunct_log(SEXP xSEXP, SEXP dfSEXP, SEXP aSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type df(dfSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_qtrunct_log(x, df, a, b));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_RcppDist_test_d4beta", (DL_FUNC) &_RcppDist_test_d4beta, 5},
@@ -197,6 +253,10 @@ static const R_CallMethodDef CallEntries[] = {
     {"_RcppDist_test_ptruncnorm", (DL_FUNC) &_RcppDist_test_ptruncnorm, 5},
     {"_RcppDist_test_qtruncnorm_nolog", (DL_FUNC) &_RcppDist_test_qtruncnorm_nolog, 5},
     {"_RcppDist_test_qtruncnorm_log", (DL_FUNC) &_RcppDist_test_qtruncnorm_log, 5},
+    {"_RcppDist_test_dtrunct", (DL_FUNC) &_RcppDist_test_dtrunct, 4},
+    {"_RcppDist_test_ptrunct", (DL_FUNC) &_RcppDist_test_ptrunct, 4},
+    {"_RcppDist_test_qtrunct_nolog", (DL_FUNC) &_RcppDist_test_qtrunct_nolog, 4},
+    {"_RcppDist_test_qtrunct_log", (DL_FUNC) &_RcppDist_test_qtrunct_log, 4},
     {NULL, NULL, 0}
 };
 

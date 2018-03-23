@@ -10,5 +10,6 @@
 #include <4beta.h>
 #include <lst.h>
 #include <truncnorm.h>
+#include <trunct.h>
 
 #endif

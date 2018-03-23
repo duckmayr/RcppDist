@@ -49,3 +49,19 @@ test_qtruncnorm_log <- function(x, mu, sigma, a, b) {
     .Call('_RcppDist_test_qtruncnorm_log', PACKAGE = 'RcppDist', x, mu, sigma, a, b)
 }
 
+test_dtrunct <- function(x, df, a, b) {
+    .Call('_RcppDist_test_dtrunct', PACKAGE = 'RcppDist', x, df, a, b)
+}
+
+test_ptrunct <- function(x, df, a, b) {
+    .Call('_RcppDist_test_ptrunct', PACKAGE = 'RcppDist', x, df, a, b)
+}
+
+test_qtrunct_nolog <- function(x, df, a, b) {
+    .Call('_RcppDist_test_qtrunct_nolog', PACKAGE = 'RcppDist', x, df, a, b)
+}
+
+test_qtrunct_log <- function(x, df, a, b) {
+    .Call('_RcppDist_test_qtrunct_log', PACKAGE = 'RcppDist', x, df, a, b)
+}
+

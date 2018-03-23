@@ -148,3 +148,49 @@ List test_qtruncnorm_log(NumericVector x, double mu, double sigma,
         _["DoubleLogNoLower"] = q_truncnorm(x[0], mu, sigma, a, b, 0, 1)
     );
 }
+
+// TRUNCATED T DISTRIBUTION
+
+// [[Rcpp::export]]
+List test_dtrunct(NumericVector x, double df, double a, double b) {
+    return List::create(
+        _["VectorLog"] = dtrunct(x, df, a, b, true),
+        _["VectorNoLog"] = dtrunct(x, df, a, b),
+        _["DoubleLog"] = d_trunct(x[0], df, a, b, 1),
+        _["DoubleNoLog"] = d_trunct(x[0], df, a, b)
+    );
+}
+
+// [[Rcpp::export]]
+List test_ptrunct(NumericVector x, double df, double a, double b) {
+    return List::create(
+        _["VectorLog"] = ptrunct(x, df, a, b, true, true),
+        _["VectorNoLog"] = ptrunct(x, df, a, b),
+        _["DoubleLog"] = p_trunct(x[0], df, a, b, 1, 1),
+        _["DoubleNoLog"] = p_trunct(x[0], df, a, b),
+        _["VectorLogNoLower"] = ptrunct(x, df, a, b, false, true),
+        _["VectorNoLogNoLower"] = ptrunct(x, df, a, b, false),
+        _["DoubleLogNoLower"] = p_trunct(x[0], df, a, b, 0, 1),
+        _["DoubleNoLogNoLower"] = p_trunct(x[0], df, a, b, 0)
+    );
+}
+
+// [[Rcpp::export]]
+List test_qtrunct_nolog(NumericVector x, double df, double a, double b) {
+    return List::create(
+        _["VectorNoLog"] = qtrunct(x, df, a, b),
+        _["DoubleNoLog"] = q_trunct(x[0], df, a, b),
+        _["VectorNoLogNoLower"] = qtrunct(x, df, a, b, false),
+        _["DoubleNoLogNoLower"] = q_trunct(x[0], df, a, b, 0)
+    );
+}
+
+// [[Rcpp::export]]
+List test_qtrunct_log(NumericVector x, double df, double a, double b) {
+    return List::create(
+        _["VectorLog"] = qtrunct(x, df, a, b, true, true),
+        _["DoubleLog"] = q_trunct(x[0], df, a, b, 1, 1),
+        _["VectorLogNoLower"] = qtrunct(x, df, a, b, false, true),
+        _["DoubleLogNoLower"] = q_trunct(x[0], df, a, b, 0, 1)
+    );
+}
