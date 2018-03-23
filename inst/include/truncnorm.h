@@ -67,8 +67,15 @@ inline Rcpp::NumericVector ptruncnorm(Rcpp::NumericVector x, double mu,
         double scale = 1.0 / (F_b - F_a);
         if ( log_p ) {
             for ( int i = 0; i < n; ++i ) {
-                double q = std::max(std::min(x[i], b), a);
-                result[i] = log(1-((R::pnorm(q, mu, sigma, 1, 0)-F_a) * scale));
+                if ( x[i] > b ) {
+                    result[i] = R_NegInf;
+                }
+                else if ( x[i] < a ) {
+                    result[i] = 0.0;
+                }
+                else{
+                    result[i] = log(1.0 - ((R::pnorm(x[i], mu, sigma, 1, 0) - F_a) * scale));
+                }
             }
         }
         else {
