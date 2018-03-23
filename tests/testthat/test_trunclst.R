@@ -101,8 +101,8 @@ test_that('The quantile functions provide correct answers', {
         if ( !lower_tail ) {
             p <- 1 - p
         }
-        F_b <- plst(b, mu, sigma, df)
-        F_a <- plst(a, mu, sigma, df)
+        F_b <- plst(b, df, mu, sigma)
+        F_a <- plst(a, df, mu, sigma)
         q <- qlst(F_a + p * (F_b - F_a), df, mu, sigma)
         return(pmin(pmax(q, a), b))
     }

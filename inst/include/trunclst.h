@@ -9,7 +9,7 @@ inline Rcpp::NumericVector dtrunclst(Rcpp::NumericVector x, double df,
         double mu, double sigma, double a, double b, bool log_p = false) {
     int n = x.size();
     Rcpp::NumericVector result(n);
-    double scale = p_lst(b, df, mu, sigma, 1, 0) - p_lst(a, mu, sigma, 1, 0);
+    double scale = p_lst(b, df, mu, sigma, 1, 0) - p_lst(a, df, mu, sigma, 1, 0);
     if ( log_p ) {
         scale = log(scale);
         for ( int i = 0; i < n; ++i ) {
@@ -209,8 +209,8 @@ inline double q_trunclst(double p, double df, double mu, double sigma,
     if ( !lower_tail ) {
         p = 1.0 - p;
     }
-    double F_a = p_lst(a, mu, sigma, 1, 0);
-    double F_b = p_lst(b, mu, sigma, 1, 0);
+    double F_a = p_lst(a, df, mu, sigma, 1, 0);
+    double F_b = p_lst(b, df, mu, sigma, 1, 0);
     double q = q_lst(F_a + p * (F_b - F_a), df, mu, sigma, 1, 0);
     return std::min(std::max(a, q), b);
 }
