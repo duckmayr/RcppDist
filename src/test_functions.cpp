@@ -98,3 +98,53 @@ List test_qlst_log(NumericVector x, double df, double mu, double sigma) {
         _["DoubleLogNoLower"] = q_lst(x[0], df, mu, sigma, 0, 1)
     );
 }
+
+// TRUNCATED NORMAL DISTRIBUTION
+
+// [[Rcpp::export]]
+List test_dtruncnorm(NumericVector x, double mu, double sigma,
+        double a, double b) {
+    return List::create(
+        _["VectorLog"] = dtruncnorm(x, mu, sigma, a, b, true),
+        _["VectorNoLog"] = dtruncnorm(x, mu, sigma, a, b),
+        _["DoubleLog"] = d_truncnorm(x[0], mu, sigma, a, b, 1),
+        _["DoubleNoLog"] = d_truncnorm(x[0], mu, sigma, a, b)
+    );
+}
+
+// [[Rcpp::export]]
+List test_ptruncnorm(NumericVector x, double mu, double sigma,
+        double a, double b) {
+    return List::create(
+        _["VectorLog"] = ptruncnorm(x, mu, sigma, a, b, true, true),
+        _["VectorNoLog"] = ptruncnorm(x, mu, sigma, a, b),
+        _["DoubleLog"] = p_truncnorm(x[0], mu, sigma, a, b, 1, 1),
+        _["DoubleNoLog"] = p_truncnorm(x[0], mu, sigma, a, b),
+        _["VectorLogNoLower"] = ptruncnorm(x, mu, sigma, a, b, false, true),
+        _["VectorNoLogNoLower"] = ptruncnorm(x, mu, sigma, a, b, false),
+        _["DoubleLogNoLower"] = p_truncnorm(x[0], mu, sigma, a, b, 0, 1),
+        _["DoubleNoLogNoLower"] = p_truncnorm(x[0], mu, sigma, a, b, 0)
+    );
+}
+
+// [[Rcpp::export]]
+List test_qtruncnorm_nolog(NumericVector x, double mu, double sigma,
+        double a, double b) {
+    return List::create(
+        _["VectorNoLog"] = qtruncnorm(x, mu, sigma, a, b),
+        _["DoubleNoLog"] = q_truncnorm(x[0], mu, sigma, a, b),
+        _["VectorNoLogNoLower"] = qtruncnorm(x, mu, sigma, a, b, false),
+        _["DoubleNoLogNoLower"] = q_truncnorm(x[0], mu, sigma, a, b, 0)
+    );
+}
+
+// [[Rcpp::export]]
+List test_qtruncnorm_log(NumericVector x, double mu, double sigma,
+        double a, double b) {
+    return List::create(
+        _["VectorLog"] = qtruncnorm(x, mu, sigma, a, b, true, true),
+        _["DoubleLog"] = q_truncnorm(x[0], mu, sigma, a, b, 1, 1),
+        _["VectorLogNoLower"] = qtruncnorm(x, mu, sigma, a, b, false, true),
+        _["DoubleLogNoLower"] = q_truncnorm(x[0], mu, sigma, a, b, 0, 1)
+    );
+}

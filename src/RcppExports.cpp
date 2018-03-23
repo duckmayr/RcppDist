@@ -123,6 +123,66 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// test_dtruncnorm
+List test_dtruncnorm(NumericVector x, double mu, double sigma, double a, double b);
+RcppExport SEXP _RcppDist_test_dtruncnorm(SEXP xSEXP, SEXP muSEXP, SEXP sigmaSEXP, SEXP aSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_dtruncnorm(x, mu, sigma, a, b));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_ptruncnorm
+List test_ptruncnorm(NumericVector x, double mu, double sigma, double a, double b);
+RcppExport SEXP _RcppDist_test_ptruncnorm(SEXP xSEXP, SEXP muSEXP, SEXP sigmaSEXP, SEXP aSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_ptruncnorm(x, mu, sigma, a, b));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_qtruncnorm_nolog
+List test_qtruncnorm_nolog(NumericVector x, double mu, double sigma, double a, double b);
+RcppExport SEXP _RcppDist_test_qtruncnorm_nolog(SEXP xSEXP, SEXP muSEXP, SEXP sigmaSEXP, SEXP aSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_qtruncnorm_nolog(x, mu, sigma, a, b));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_qtruncnorm_log
+List test_qtruncnorm_log(NumericVector x, double mu, double sigma, double a, double b);
+RcppExport SEXP _RcppDist_test_qtruncnorm_log(SEXP xSEXP, SEXP muSEXP, SEXP sigmaSEXP, SEXP aSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_qtruncnorm_log(x, mu, sigma, a, b));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_RcppDist_test_d4beta", (DL_FUNC) &_RcppDist_test_d4beta, 5},
@@ -133,6 +193,10 @@ static const R_CallMethodDef CallEntries[] = {
     {"_RcppDist_test_plst", (DL_FUNC) &_RcppDist_test_plst, 4},
     {"_RcppDist_test_qlst_nolog", (DL_FUNC) &_RcppDist_test_qlst_nolog, 4},
     {"_RcppDist_test_qlst_log", (DL_FUNC) &_RcppDist_test_qlst_log, 4},
+    {"_RcppDist_test_dtruncnorm", (DL_FUNC) &_RcppDist_test_dtruncnorm, 5},
+    {"_RcppDist_test_ptruncnorm", (DL_FUNC) &_RcppDist_test_ptruncnorm, 5},
+    {"_RcppDist_test_qtruncnorm_nolog", (DL_FUNC) &_RcppDist_test_qtruncnorm_nolog, 5},
+    {"_RcppDist_test_qtruncnorm_log", (DL_FUNC) &_RcppDist_test_qtruncnorm_log, 5},
     {NULL, NULL, 0}
 };
 
