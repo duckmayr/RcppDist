@@ -303,6 +303,62 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// test_dtri
+List test_dtri(NumericVector x, double a, double b, double c);
+RcppExport SEXP _RcppDist_test_dtri(SEXP xSEXP, SEXP aSEXP, SEXP bSEXP, SEXP cSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    Rcpp::traits::input_parameter< double >::type c(cSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_dtri(x, a, b, c));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_ptri
+List test_ptri(NumericVector x, double a, double b, double c);
+RcppExport SEXP _RcppDist_test_ptri(SEXP xSEXP, SEXP aSEXP, SEXP bSEXP, SEXP cSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    Rcpp::traits::input_parameter< double >::type c(cSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_ptri(x, a, b, c));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_qtri_nolog
+List test_qtri_nolog(NumericVector x, double a, double b, double c);
+RcppExport SEXP _RcppDist_test_qtri_nolog(SEXP xSEXP, SEXP aSEXP, SEXP bSEXP, SEXP cSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    Rcpp::traits::input_parameter< double >::type c(cSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_qtri_nolog(x, a, b, c));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_qtri_log
+List test_qtri_log(NumericVector x, double a, double b, double c);
+RcppExport SEXP _RcppDist_test_qtri_log(SEXP xSEXP, SEXP aSEXP, SEXP bSEXP, SEXP cSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    Rcpp::traits::input_parameter< double >::type c(cSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_qtri_log(x, a, b, c));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_RcppDist_test_d4beta", (DL_FUNC) &_RcppDist_test_d4beta, 5},
@@ -325,6 +381,10 @@ static const R_CallMethodDef CallEntries[] = {
     {"_RcppDist_test_ptrunclst", (DL_FUNC) &_RcppDist_test_ptrunclst, 6},
     {"_RcppDist_test_qtrunclst_nolog", (DL_FUNC) &_RcppDist_test_qtrunclst_nolog, 6},
     {"_RcppDist_test_qtrunclst_log", (DL_FUNC) &_RcppDist_test_qtrunclst_log, 6},
+    {"_RcppDist_test_dtri", (DL_FUNC) &_RcppDist_test_dtri, 4},
+    {"_RcppDist_test_ptri", (DL_FUNC) &_RcppDist_test_ptri, 4},
+    {"_RcppDist_test_qtri_nolog", (DL_FUNC) &_RcppDist_test_qtri_nolog, 4},
+    {"_RcppDist_test_qtri_log", (DL_FUNC) &_RcppDist_test_qtri_log, 4},
     {NULL, NULL, 0}
 };
 

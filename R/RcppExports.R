@@ -81,3 +81,19 @@ test_qtrunclst_log <- function(x, df, mu, sigma, a, b) {
     .Call('_RcppDist_test_qtrunclst_log', PACKAGE = 'RcppDist', x, df, mu, sigma, a, b)
 }
 
+test_dtri <- function(x, a, b, c) {
+    .Call('_RcppDist_test_dtri', PACKAGE = 'RcppDist', x, a, b, c)
+}
+
+test_ptri <- function(x, a, b, c) {
+    .Call('_RcppDist_test_ptri', PACKAGE = 'RcppDist', x, a, b, c)
+}
+
+test_qtri_nolog <- function(x, a, b, c) {
+    .Call('_RcppDist_test_qtri_nolog', PACKAGE = 'RcppDist', x, a, b, c)
+}
+
+test_qtri_log <- function(x, a, b, c) {
+    .Call('_RcppDist_test_qtri_log', PACKAGE = 'RcppDist', x, a, b, c)
+}
+

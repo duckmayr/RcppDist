@@ -251,3 +251,52 @@ List test_qtrunclst_log(NumericVector x, double df, double mu, double sigma,
         _["DoubleLogNoLower"] = q_trunclst(x[0], df, mu, sigma, a, b, 0, 1)
     );
 }
+
+
+
+// FOUR PARAMETER BETA DISTRIBUTION
+
+// [[Rcpp::export]]
+List test_dtri(NumericVector x, double a, double b, double c) {
+    return List::create(
+        _["VectorLog"] = dtri(x, a, b, c, true),
+        _["VectorNoLog"] = dtri(x, a, b, c),
+        _["DoubleLog"] = d_tri(x[0], a, b, c, 1),
+        _["DoubleNoLog"] = d_tri(x[0], a, b, c)
+    );
+}
+
+// [[Rcpp::export]]
+List test_ptri(NumericVector x, double a, double b, double c) {
+    return List::create(
+        _["VectorLog"] = ptri(x, a, b, c, true, true),
+        _["VectorNoLog"] = ptri(x, a, b, c),
+        _["DoubleLog"] = p_tri(x[0], a, b, c, 1, 1),
+        _["DoubleNoLog"] = p_tri(x[0], a, b, c),
+        _["VectorLogNoLower"] = ptri(x, a, b, c, false, true),
+        _["VectorNoLogNoLower"] = ptri(x, a, b, c, false),
+        _["DoubleLogNoLower"] = p_tri(x[0], a, b, c, 0, 1),
+        _["DoubleNoLogNoLower"] = p_tri(x[0], a, b, c, 0)
+    );
+}
+
+// [[Rcpp::export]]
+List test_qtri_nolog(NumericVector x, double a, double b, double c) {
+    return List::create(
+        _["VectorNoLog"] = qtri(x, a, b, c),
+        _["DoubleNoLog"] = q_tri(x[0], a, b, c),
+        _["VectorNoLogNoLower"] = qtri(x, a, b, c, false),
+        _["DoubleNoLogNoLower"] = q_tri(x[0], a, b, c, 0)
+    );
+}
+
+// [[Rcpp::export]]
+List test_qtri_log(NumericVector x, double a, double b, double c) {
+    return List::create(
+        _["VectorLog"] = qtri(x, a, b, c, true, true),
+        _["DoubleLog"] = q_tri(x[0], a, b, c, 1, 1),
+        _["VectorLogNoLower"] = qtri(x, a, b, c, false, true),
+        _["DoubleLogNoLower"] = q_tri(x[0], a, b, c, 0, 1)
+    );
+}
+

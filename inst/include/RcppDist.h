@@ -12,5 +12,6 @@
 #include <truncnorm.h>
 #include <trunct.h>
 #include <trunclst.h>
+#include <triangular.h>
 
 #endif
