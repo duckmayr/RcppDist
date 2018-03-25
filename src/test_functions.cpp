@@ -300,3 +300,14 @@ List test_qtri_log(NumericVector x, double a, double b, double c) {
     );
 }
 
+
+
+// MULTIVARIATE NORMAL DISTRIBUTION
+
+// [[Rcpp::export]]
+List test_dmvnorm(arma::mat x, arma::vec mu, arma::mat S) {
+    return List::create(
+        _["Log"] = dmvnorm(x, mu, S, true),
+        _["NoLog"] = dmvnorm(x, mu, S, false)
+    );
+}

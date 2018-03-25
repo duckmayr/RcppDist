@@ -97,3 +97,7 @@ test_qtri_log <- function(x, a, b, c) {
     .Call('_RcppDist_test_qtri_log', PACKAGE = 'RcppDist', x, a, b, c)
 }
 
+test_dmvnorm <- function(x, mu, S) {
+    .Call('_RcppDist_test_dmvnorm', PACKAGE = 'RcppDist', x, mu, S)
+}
+

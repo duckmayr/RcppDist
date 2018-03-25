@@ -13,5 +13,6 @@
 #include <trunct.h>
 #include <trunclst.h>
 #include <triangular.h>
+#include <mvnorm.h>
 
 #endif
