@@ -101,6 +101,10 @@ test_dmvnorm <- function(x, mu, S) {
     .Call('_RcppDist_test_dmvnorm', PACKAGE = 'RcppDist', x, mu, S)
 }
 
+test_dmvt <- function(x, mu, S, df) {
+    .Call('_RcppDist_test_dmvt', PACKAGE = 'RcppDist', x, mu, S, df)
+}
+
 test_dwish <- function(x, df, S) {
     .Call('_RcppDist_test_dwish', PACKAGE = 'RcppDist', x, df, S)
 }

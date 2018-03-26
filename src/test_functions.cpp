@@ -314,6 +314,18 @@ List test_dmvnorm(arma::mat x, arma::vec mu, arma::mat S) {
 
 
 
+// MULTIVARIATE T DISTRIBUTION
+
+// [[Rcpp::export]]
+List test_dmvt(arma::mat x, arma::vec mu, arma::mat S, double df) {
+    return List::create(
+        _["Log"] = dmvt(x, mu, S, df, true),
+        _["NoLog"] = dmvt(x, mu, S, df, false)
+    );
+}
+
+
+
 // WISHART DISTRIBUTION
 
 // [[Rcpp::export]]
