@@ -14,5 +14,6 @@
 #include <trunclst.h>
 #include <triangular.h>
 #include <mvnorm.h>
+#include <wishart.h>
 
 #endif

@@ -311,3 +311,15 @@ List test_dmvnorm(arma::mat x, arma::vec mu, arma::mat S) {
         _["NoLog"] = dmvnorm(x, mu, S, false)
     );
 }
+
+
+
+// WISHART DISTRIBUTION
+
+// [[Rcpp::export]]
+List test_dwish(arma::mat x, int df, arma::mat S) {
+    return List::create(
+        _["Log"] = dwish(x, df, S, true),
+        _["NoLog"] = dwish(x, df, S, false)
+    );
+}
