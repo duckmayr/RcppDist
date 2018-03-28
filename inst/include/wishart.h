@@ -48,4 +48,24 @@ inline arma::mat rwish(const int df, const arma::mat& S) {
     return B.t() * B;
 }
 
+inline double diwish(const arma::mat& X, const int df, const arma::mat& S,
+        const bool log_p = false) {
+    double x = df * 0.5;
+    int p = X.n_cols;
+    if ( log_p ) {
+        double P = (x * log(arma::det(S))) - (0.5 * arma::trace(S * X.i()));
+        P -= ( (0.5 * (df + p + 1)) * log(arma::det(X)) );
+        P -= ( (0.5 * (df * p)) * M_LN2 );
+        return P - lmvgamma(p, x);
+    }
+    double P = pow(arma::det(S), x);
+    P *= exp(-0.5 * arma::trace(S * X.i()));
+    P *= pow(arma::det(X), (-1.0 * (0.5 * (df + p + 1))));
+    return P / ( pow(2.0, (0.5 * (df * p))) * mvgamma(p, x) );
+}
+
+inline arma::mat riwish(const int df, const arma::mat& S) {
+    return rwish(df, S.i()).i();
+}
+
 #endif

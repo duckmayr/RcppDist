@@ -399,6 +399,19 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// test_diwish
+List test_diwish(arma::mat x, int df, arma::mat S);
+RcppExport SEXP _RcppDist_test_diwish(SEXP xSEXP, SEXP dfSEXP, SEXP SSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type df(dfSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type S(SSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_diwish(x, df, S));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_RcppDist_test_d4beta", (DL_FUNC) &_RcppDist_test_d4beta, 5},
@@ -428,6 +441,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_RcppDist_test_dmvnorm", (DL_FUNC) &_RcppDist_test_dmvnorm, 3},
     {"_RcppDist_test_dmvt", (DL_FUNC) &_RcppDist_test_dmvt, 4},
     {"_RcppDist_test_dwish", (DL_FUNC) &_RcppDist_test_dwish, 3},
+    {"_RcppDist_test_diwish", (DL_FUNC) &_RcppDist_test_diwish, 3},
     {NULL, NULL, 0}
 };
 

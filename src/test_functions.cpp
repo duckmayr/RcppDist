@@ -335,3 +335,15 @@ List test_dwish(arma::mat x, int df, arma::mat S) {
         _["NoLog"] = dwish(x, df, S, false)
     );
 }
+
+
+
+// INVERSE WISHART DISTRIBUTION
+
+// [[Rcpp::export]]
+List test_diwish(arma::mat x, int df, arma::mat S) {
+    return List::create(
+        _["Log"] = diwish(x, df, S, true),
+        _["NoLog"] = diwish(x, df, S, false)
+    );
+}

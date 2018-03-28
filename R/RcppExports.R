@@ -109,3 +109,7 @@ test_dwish <- function(x, df, S) {
     .Call('_RcppDist_test_dwish', PACKAGE = 'RcppDist', x, df, S)
 }
 
+test_diwish <- function(x, df, S) {
+    .Call('_RcppDist_test_diwish', PACKAGE = 'RcppDist', x, df, S)
+}
+
