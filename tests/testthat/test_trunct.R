@@ -1,112 +1,114 @@
 context("Truncated t Distribution")
 
 test_that('The density functions provide correct answers', {
-    dtrunct_ <- function(x, df, a, b, log_p = FALSE) {
-        scale = pt(b, df) - pt(a, df)
-        if ( log_p ) {
-            result = dt(x, df, log = TRUE) - log(scale)
-            return(ifelse(x < a | x > b, -Inf, result))
-        }
-        else {
-            result = dt(x, df) / scale
-            return(ifelse(x < a | x > b, 0, result))
-        }
-    }
     x <- seq(from = -3, to = 3)
     df <- 1; a <- -2.5; b <- 2.5
     expect_equal(test_dtrunct(x, df, a, b),
                  list(
-                    "VectorLog" = dtrunct_(x, df, a, b, TRUE),
-                    "VectorNoLog" = dtrunct_(x, df, a, b, FALSE),
-                    "DoubleLog" = dtrunct_(x[1], df, a, b, TRUE),
-                    "DoubleNoLog" = dtrunct_(x[1], df, a, b, FALSE)
+                    "VectorLog" = c(-Inf, -2.476782025634, -1.560491293760,
+                                    -0.867344113200, -1.560491293760,
+                                    -2.476782025634, -Inf),
+                    "VectorNoLog" = c(0, 0.084013143207, 0.210032858016,
+                                      0.420065716033, 0.210032858016,
+                                      0.084013143207, 0),
+                    "DoubleLog" = -Inf,
+                    "DoubleNoLog" = 0
                     )
                 )
     x <- x[-1]
     expect_equal(test_dtrunct(x, df, a, b),
                  list(
-                    "VectorLog" = dtrunct_(x, df, a, b, TRUE),
-                    "VectorNoLog" = dtrunct_(x, df, a, b, FALSE),
-                    "DoubleLog" = dtrunct_(x[1], df, a, b, TRUE),
-                    "DoubleNoLog" = dtrunct_(x[1], df, a, b, FALSE)
+                    "VectorLog" = c(-2.476782025634, -1.560491293760,
+                                    -0.867344113200, -1.560491293760,
+                                    -2.476782025634, -Inf),
+                    "VectorNoLog" = c(0.084013143207, 0.210032858016,
+                                      0.420065716033, 0.210032858016,
+                                      0.084013143207, 0),
+                    "DoubleLog" = -2.476782025634,
+                    "DoubleNoLog" = 0.084013143207
                     )
                 )
 })
 
 
 test_that('The distribution functions provide correct answers', {
-    ptrunct_ <- function(q, df, a, b, lower_tail = TRUE, log_p = FALSE) {
-        scale <- pt(b, df) - pt(a, df)
-        qq <- pmax(pmin(q, b), a)
-        p <- (pt(qq, df) - pt(a, df)) / scale
-        if ( !lower_tail ) {
-            p <- 1 - p
-        }
-        if ( log_p ) {
-            p <- log(p)
-        }
-        return(p)
-    }
     x <- seq(from = -3, to = 3)
     df <- 1; a <- -2.5; b <- 2.5
     expect_equal(test_ptrunct(x, df, a, b),
                  list(
-                    "VectorLog" = ptrunct_(x, df, a, b, TRUE, TRUE),
-                    "VectorNoLog" = ptrunct_(x, df, a, b),
-                    "DoubleLog" = ptrunct_(x[1], df, a, b, TRUE, TRUE),
-                    "DoubleNoLog" = ptrunct_(x[1], df, a, b),
-                    "VectorLogNoLower" = ptrunct_(x, df, a, b, FALSE, TRUE),
-                    "VectorNoLogNoLower" = ptrunct_(x, df, a, b, FALSE),
-                    "DoubleLogNoLower" = ptrunct_(x[1], df, a, b, FALSE, TRUE),
-                    "DoubleNoLogNoLower" = ptrunct_(x[1], df, a, b, FALSE)
+                    "VectorLog" = c(-Inf, -3.354558641430, -1.771479555136,
+                                    -0.693147180560, -0.186427363842,
+                                    -0.035549233639, 0),
+                    "VectorNoLog" = c(0, 0.034924781105, 0.170081158122,
+                                      0.5, 0.829918841878, 0.965075218895, 1),
+                    "DoubleLog" = -Inf,
+                    "DoubleNoLog" = 0,
+                    "VectorLogNoLower" = c(0, -0.035549233639, -0.186427363842,
+                                           -0.693147180560, -1.771479555136,
+                                           -3.354558641430, -Inf),
+                    "VectorNoLogNoLower" = c(1, 0.965075218895, 0.829918841878,
+                                             0.5, 0.170081158122,
+                                             0.034924781105, 0),
+                    "DoubleLogNoLower" = 0,
+                    "DoubleNoLogNoLower" = 1
                     )
                 )
     x <- x[-1]
     expect_equal(test_ptrunct(x, df, a, b),
                  list(
-                    "VectorLog" = ptrunct_(x, df, a, b, TRUE, TRUE),
-                    "VectorNoLog" = ptrunct_(x, df, a, b),
-                    "DoubleLog" = ptrunct_(x[1], df, a, b, TRUE, TRUE),
-                    "DoubleNoLog" = ptrunct_(x[1], df, a, b),
-                    "VectorLogNoLower" = ptrunct_(x, df, a, b, FALSE, TRUE),
-                    "VectorNoLogNoLower" = ptrunct_(x, df, a, b, FALSE),
-                    "DoubleLogNoLower" = ptrunct_(x[1], df, a, b, FALSE, TRUE),
-                    "DoubleNoLogNoLower" = ptrunct_(x[1], df, a, b, FALSE)
+                    "VectorLog" = c(-3.354558641430, -1.771479555136,
+                                    -0.693147180560, -0.186427363842,
+                                    -0.035549233639, 0),
+                    "VectorNoLog" = c(0.034924781105, 0.170081158122,
+                                      0.5, 0.829918841878, 0.965075218895, 1),
+                    "DoubleLog" = -3.354558641430,
+                    "DoubleNoLog" = 0.034924781105,
+                    "VectorLogNoLower" = c(-0.035549233639, -0.186427363842,
+                                           -0.693147180560, -1.771479555136,
+                                           -3.354558641430, -Inf),
+                    "VectorNoLogNoLower" = c(0.965075218895, 0.829918841878,
+                                             0.5, 0.170081158122,
+                                             0.034924781105, 0),
+                    "DoubleLogNoLower" = -0.035549233639,
+                    "DoubleNoLogNoLower" = 0.965075218895
+                    )
+                )
+    x <- x[length(x)]
+    expect_equal(test_ptrunct(x, df, a, b),
+                 list(
+                    "VectorLog" = 0,
+                    "VectorNoLog" = 1,
+                    "DoubleLog" = 0,
+                    "DoubleNoLog" = 1,
+                    "VectorLogNoLower" = -Inf,
+                    "VectorNoLogNoLower" = 0,
+                    "DoubleLogNoLower" = -Inf,
+                    "DoubleNoLogNoLower" = 0
                     )
                 )
 })
 
 
 test_that('The quantile functions provide correct answers', {
-    qtrunct_ <- function(p, df, a, b, lower_tail = TRUE, log_p = FALSE) {
-        if ( log_p ) {
-            p <- exp(p)
-        }
-        if ( !lower_tail ) {
-            p <- 1 - p
-        }
-        F_b <- pt(b, df)
-        F_a <- pt(a, df)
-        q <- qt(F_a + p * (F_b - F_a), df)
-        return(pmin(pmax(q, a), b))
-    }
     x <- c(0, 0.5, 1)
     df <- 1; a <- -2.5; b <- 2.5
     expect_equal(test_qtrunct_nolog(x, df, a, b),
                  list(
-                    "VectorNoLog" = qtrunct_(x, df, a, b),
-                    "DoubleNoLog" = qtrunct_(x[1], df, a, b),
-                    "VectorNoLogNoLower" = qtrunct_(x, df, a, b, FALSE),
-                    "DoubleNoLogNoLower" = qtrunct_(x[1], df, a, b, FALSE)
+                    "VectorNoLog" = c(-2.5, 0, 2.5),
+                    "DoubleNoLog" = -2.5,
+                    "VectorNoLogNoLower" = c(2.5, 0, -2.5),
+                    "DoubleNoLogNoLower" = 2.5
                     )
                 )
     x <- c(-1, -2, -10)
     expect_equal(test_qtrunct_log(x, df, a, b),
                  list(
-                    "VectorLog" = qtrunct_(x, df, a, b, TRUE, TRUE),
-                    "DoubleLog" = qtrunct_(x[1], df, a, b, TRUE, TRUE),
-                    "VectorLogNoLower" = qtrunct_(x, df, a, b, FALSE, TRUE),
-                    "DoubleLogNoLower" = qtrunct_(x[1], df, a, b, FALSE, TRUE)
+                    "VectorLog" = c(-0.325322483405, -1.180797941894,
+                                    -2.499216644994),
+                    "DoubleLog" = -0.325322483405,
+                    "VectorLogNoLower" = c(0.325322483405, 1.180797941894,
+                                           2.499216644994),
+                    "DoubleLogNoLower" = 0.325322483405
                     )
                 )
 })

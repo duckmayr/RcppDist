@@ -1,115 +1,91 @@
 context("Triangular Distribution")
 
 test_that('The density functions provide correct answers', {
-    dtri_ <- function(x, a, b, c, log_p = FALSE) {
-        p <- ifelse(x < c, (2 * (x - a)) / ((b - a) * (c - a)),
-                    (2 * (b - x)) / ((b - a) * (b - c)))
-        p[x < a | x > b] <- 0
-        if ( log_p ) {
-            return(log(p))
-        }
-        return(p)
-    }
     x <- seq(from = -3, to = 3)
     a <- -2.5; b <- 2.5; c <- 0;
     expect_equal(test_dtri(x, a, b, c),
                  list(
-                    "VectorLog" = dtri_(x, a, b, c, TRUE),
-                    "VectorNoLog" = dtri_(x, a, b, c, FALSE),
-                    "DoubleLog" = dtri_(x[1], a, b, c, TRUE),
-                    "DoubleNoLog" = dtri_(x[1], a, b, c, FALSE)
+                    "VectorLog" = c(-Inf, -2.525728644308, -1.427116355640,
+                                    -0.916290731874, -1.427116355640,
+                                    -2.525728644308, -Inf),
+                    "VectorNoLog" = c(0, 0.08, 0.24, 0.4, 0.24, 0.08, 0),
+                    "DoubleLog" = -Inf,
+                    "DoubleNoLog" = 0
                     )
                 )
     x <- x[-1]
     expect_equal(test_dtri(x, a, b, c),
                  list(
-                    "VectorLog" = dtri_(x, a, b, c, TRUE),
-                    "VectorNoLog" = dtri_(x, a, b, c, FALSE),
-                    "DoubleLog" = dtri_(x[1], a, b, c, TRUE),
-                    "DoubleNoLog" = dtri_(x[1], a, b, c, FALSE)
+                    "VectorLog" = c(-2.525728644308, -1.427116355640,
+                                    -0.916290731874, -1.427116355640,
+                                    -2.525728644308, -Inf),
+                    "VectorNoLog" = c(0.08, 0.24, 0.4, 0.24, 0.08, 0),
+                    "DoubleLog" = -2.525728644308,
+                    "DoubleNoLog" = 0.08
                     )
                 )
 })
 
 
 test_that('The distribution functions provide correct answers', {
-    ptri_ <- function(q, a, b, c, lower_tail = TRUE, log_p = FALSE) {
-        p <- ifelse(q < c, ((x - a)^2) / ((b - a) * (c - a)),
-                    1 - ((x - b)^2) / ((b - a) * (b - c)))
-        p[q < a] <- 0
-        p[q > b] <- 1
-        if ( log_p ) {
-            if ( lower_tail ) {
-                return(log(p))
-            }
-            return(log(1 - p))
-        }
-        if ( lower_tail ) {
-            return(p)
-        }
-        return(1 - p)
-    }
     x <- seq(from = -3, to = 3)
     a <- -2.5; b <- 2.5; c <- 0;
     expect_equal(test_ptri(x, a, b, c),
                  list(
-                    "VectorLog" = ptri_(x, a, b, c, TRUE, TRUE),
-                    "VectorNoLog" = ptri_(x, a, b, c),
-                    "DoubleLog" = ptri_(x[1], a, b, c, TRUE, TRUE),
-                    "DoubleNoLog" = ptri_(x[1], a, b, c),
-                    "VectorLogNoLower" = ptri_(x, a, b, c, FALSE, TRUE),
-                    "VectorNoLogNoLower" = ptri_(x, a, b, c, FALSE),
-                    "DoubleLogNoLower" = ptri_(x[1], a, b, c, FALSE, TRUE),
-                    "DoubleNoLogNoLower" = ptri_(x[1], a, b, c, FALSE)
+                    "VectorLog" = c(-Inf, -3.912023005428, -1.714798428092,
+                                    -0.693147180560, -0.198450938724,
+                                    -0.020202707318, 0),
+                    "VectorNoLog" = c(0, 0.02, 0.18, 0.5, 0.82, 0.98, 1),
+                    "DoubleLog" = -Inf,
+                    "DoubleNoLog" = 0,
+                    "VectorLogNoLower" = c(0, -0.020202707318, -0.198450938724,
+                                           -0.693147180560, -1.714798428092,
+                                           -3.912023005428, -Inf),
+                    "VectorNoLogNoLower" = c(1, 0.98, 0.82, 0.5, 0.18, 0.02, 0),
+                    "DoubleLogNoLower" = 0,
+                    "DoubleNoLogNoLower" = 1
                     )
                 )
     x <- x[-1]
     expect_equal(test_ptri(x, a, b, c),
                  list(
-                    "VectorLog" = ptri_(x, a, b, c, TRUE, TRUE),
-                    "VectorNoLog" = ptri_(x, a, b, c),
-                    "DoubleLog" = ptri_(x[1], a, b, c, TRUE, TRUE),
-                    "DoubleNoLog" = ptri_(x[1], a, b, c),
-                    "VectorLogNoLower" = ptri_(x, a, b, c, FALSE, TRUE),
-                    "VectorNoLogNoLower" = ptri_(x, a, b, c, FALSE),
-                    "DoubleLogNoLower" = ptri_(x[1], a, b, c, FALSE, TRUE),
-                    "DoubleNoLogNoLower" = ptri_(x[1], a, b, c, FALSE)
+                    "VectorLog" = c(-3.912023005428, -1.714798428092,
+                                    -0.693147180560, -0.198450938724,
+                                    -0.020202707318, 0),
+                    "VectorNoLog" = c(0.02, 0.18, 0.5, 0.82, 0.98, 1),
+                    "DoubleLog" = -3.912023005428,
+                    "DoubleNoLog" = 0.02,
+                    "VectorLogNoLower" = c(-0.020202707318, -0.198450938724,
+                                           -0.693147180560, -1.714798428092,
+                                           -3.912023005428, -Inf),
+                    "VectorNoLogNoLower" = c(0.98, 0.82, 0.5, 0.18, 0.02, 0),
+                    "DoubleLogNoLower" = -0.020202707318,
+                    "DoubleNoLogNoLower" = 0.98
                     )
                 )
 })
 
 
 test_that('The quantile functions provide correct answers', {
-    qtri_ <- function(p, a, b, c, lower_tail = TRUE, log_p = FALSE) {
-        if ( log_p ) {
-            p <- exp(p)
-        }
-        if ( !lower_tail ) {
-            p <- 1 - p
-        }
-        cutoff <- (c - a) / (b - a)
-        q <- numeric(length(p))
-        q[p < cutoff] <- a + sqrt((b - a) * (c - a) * p[p < cutoff])
-        q[p >= cutoff] <- b - sqrt((b - a) * (b - c) * (1 - p[p >= cutoff]))
-        return(q)
-    }
     x <- c(0, 0.5, 1)
     a <- -2.5; b <- 2.5; c <- 0;
     expect_equal(test_qtri_nolog(x, a, b, c),
                  list(
-                    "VectorNoLog" = qtri_(x, a, b, c),
-                    "DoubleNoLog" = qtri_(x[1], a, b, c),
-                    "VectorNoLogNoLower" = qtri_(x, a, b, c, FALSE),
-                    "DoubleNoLogNoLower" = qtri_(x[1], a, b, c, FALSE)
+                    "VectorNoLog" = c(-2.5, 0, 2.5),
+                    "DoubleNoLog" = -2.5,
+                    "VectorNoLogNoLower" = c(2.5, 0, -2.5),
+                    "DoubleNoLogNoLower" = 2.5
                     )
                 )
     x <- c(0, -1, -2, -10)
     expect_equal(test_qtri_log(x, a, b, c),
                  list(
-                    "VectorLog" = qtri_(x, a, b, c, TRUE, TRUE),
-                    "DoubleLog" = qtri_(x[1], a, b, c, TRUE, TRUE),
-                    "VectorLogNoLower" = qtri_(x, a, b, c, FALSE, TRUE),
-                    "DoubleLogNoLower" = qtri_(x[1], a, b, c, FALSE, TRUE)
+                    "VectorLog" = c(2.5, -0.355590287598, -1.199349762443,
+                                    -2.476177759928),
+                    "DoubleLog" = 2.5,
+                    "VectorLogNoLower" = c(-2.500000000000, 0.355590287598,
+                                           1.199349762443, 2.476177759928),
+                    "DoubleLogNoLower" = -2.5
                     )
                 )
 })

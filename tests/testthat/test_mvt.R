@@ -15,4 +15,11 @@ test_that('The density function provides correct answers', {
                                         0.0011867155), ncol = 1)
                  )
     )
+    S <- matrix(c(1/2, 1/3, 1/4, 1/3, 1/4, 1/5, 1/4, 1/5, 1/6), ncol = 3)
+    expect_equal(test_dmvt(matrix(rep(1, 3), nrow = 1), rep(0, 3), S, df),
+                 list(
+                     "Log" = matrix(-2.082560599505, ncol = 1),
+                     "NoLog" = matrix(0.124610725172, ncol = 1)
+                 )
+    )
 })

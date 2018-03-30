@@ -135,21 +135,52 @@ inline double p_truncnorm(double x, double mu, double sigma, double a, double b,
         int lower_tail = 1, int log_p = 0) {
     double F_a = R::pnorm(a, mu, sigma, 1, 0);
     double F_b = R::pnorm(b, mu, sigma, 1, 0);
-    double q = std::max(std::min(x, b), a);
     if ( lower_tail ) {
         if ( log_p ) {
-            return log(R::pnorm(q, mu, sigma, 1, 0) - F_a) - log(F_b - F_a);
+            if ( x < a ) {
+                return R_NegInf;
+            }
+            else if ( x > b ) {
+                return 0.0;
+            }
+            else {
+                return log(R::pnorm(x, mu, sigma, 1, 0) - F_a) - log(F_b - F_a);
+            }
         }
         else {
-            return (R::pnorm(q, mu, sigma, 1, 0) - F_a) / (F_b - F_a);
+            if ( x < a ) {
+                return 0.0;
+            }
+            else if ( x > b ) {
+                return 1.0;
+            }
+            else {
+                return (R::pnorm(x, mu, sigma, 1, 0) - F_a) / (F_b - F_a);
+            }
         }
     }
     else {
         if ( log_p ) {
-            return log(1 - ((R::pnorm(q, mu, sigma, 1, 0) - F_a) / (F_b-F_a)));
+            if ( x < a ) {
+                return 0.0;
+            }
+            else if ( x > b ) {
+                return R_NegInf;
+            }
+            else {
+                return log(1.0 - ((R::pnorm(x, mu, sigma, 1, 0) - F_a) / (F_b-F_a)));
+            }
         }
         else {
-            return 1 - (R::pnorm(q, mu, sigma, 1, 0) - F_a) / (F_b - F_a);
+            if ( x < a ) {
+                return 1.0;
+            }
+            else if ( x > b ) {
+                return 0.0;
+            }
+            else {
+                return 1.0 - (R::pnorm(x, mu, sigma, 1, 0) - F_a) / (F_b - F_a);
+            }
         }
     }
 }
