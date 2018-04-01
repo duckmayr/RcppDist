@@ -5,6 +5,9 @@
     #include <Rcpp.h>
 #else
     #include <RcppArmadillo.h>
+    #include <mvnorm.h>
+    #include <mvt.h>
+    #include <wishart.h>
 #endif
 
 #include <4beta.h>
@@ -13,8 +16,5 @@
 #include <trunct.h>
 #include <trunclst.h>
 #include <triangular.h>
-#include <mvnorm.h>
-#include <mvt.h>
-#include <wishart.h>
 
 #endif
