@@ -5,7 +5,7 @@
 
 inline arma::vec dmvt(const arma::mat& x, const arma::vec& mu, arma::mat S,
         const double df, const bool log_p = false) {
-    arma::uword n = x.n_rows, m = x.n_cols, i;
+    arma::uword n = x.n_rows, m = x.n_cols;
     double det_S = arma::det(S);
     S = S.i();
     arma::vec result(n);
@@ -28,8 +28,8 @@ inline arma::vec dmvt(const arma::mat& x, const arma::vec& mu, arma::mat S,
     return result;
 }
 
-inline arma::mat rmvt(const int n, const arma::vec& mu, const arma::mat& S,
-               const double df) {
+inline arma::mat rmvt(const arma::uword n, const arma::vec& mu,
+        const arma::mat& S, const double df) {
     arma::uword m = S.n_cols;
     arma::vec U = Rcpp::rchisq(n, df);
     U = sqrt(df / U);

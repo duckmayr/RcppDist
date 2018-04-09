@@ -3,7 +3,7 @@
 
 inline arma::vec dmvnorm(const arma::mat& x, const arma::vec& mu, arma::mat S,
         bool log_p = false) {
-    arma::uword n = x.n_rows, m = x.n_cols, i;
+    arma::uword n = x.n_rows, m = x.n_cols;
     double det_S = arma::det(S);
     S = S.i();
     arma::vec result(n);
