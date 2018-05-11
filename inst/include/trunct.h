@@ -209,7 +209,7 @@ inline double q_trunct(double p, double df, double a, double b,
     return std::min(std::max(a, q), b);
 }
 
-inline double r_trunct(int n, double df, double a, double b) {
+inline double r_trunct(double df, double a, double b) {
     return q_trunct(R::runif(0.0, 1.0), df, a, b);
 }
 

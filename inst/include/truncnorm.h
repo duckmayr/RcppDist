@@ -199,7 +199,7 @@ inline double q_truncnorm(double p, double mu, double sigma, double a, double b,
     return std::min(std::max(a, q), b);
 }
 
-inline double r_truncnorm(int n, double mu, double sigma, double a, double b) {
+inline double r_truncnorm(double mu, double sigma, double a, double b) {
     return q_truncnorm(R::runif(0.0, 1.0), mu, sigma, a, b);
 }
 

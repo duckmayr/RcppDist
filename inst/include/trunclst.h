@@ -215,7 +215,7 @@ inline double q_trunclst(double p, double df, double mu, double sigma,
     return std::min(std::max(a, q), b);
 }
 
-inline double r_trunclst(int n, double df, double mu, double sigma,
+inline double r_trunclst(double df, double mu, double sigma,
         double a, double b) {
     return q_trunclst(R::runif(0.0, 1.0), df, mu, sigma, a, b);
 }
