@@ -21,6 +21,8 @@ r_packages:
   - Rcpp
   - RcppArmadillo
   - testthat
+  - knitr
+  - rmarkdown
 
 after_success:
   - Rscript -e 'library(covr); codecov()'
