@@ -11,7 +11,7 @@
 AC_PREREQ(2.61)
 
 ## Process this file with autoconf to produce a configure script.
-AC_INIT([RcppDist], 0.0.0.9000)
+AC_INIT([RcppDist], 0.1.0)
 
 ## Set R_HOME, respecting an environment variable if one is set
 : ${R_HOME=$(R RHOME)}

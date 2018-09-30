@@ -1,6 +1,6 @@
 Package: RcppDist
 Title: 'Rcpp' Integration of Additional Probability Distributions
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: person(given = "JB",
                   family = "Duck-Mayr",
                   email = "j.duckmayr@gmail.com",
