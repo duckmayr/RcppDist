@@ -12,6 +12,9 @@ r:
   - release
   - oldrel
   - devel
+  
+brew_packages:
+  - libgit2
 
 r_packages:
   - covr
