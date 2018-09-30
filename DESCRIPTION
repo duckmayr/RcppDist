@@ -4,7 +4,8 @@ Version: 0.0.0.9000
 Authors@R: person(given = "JB",
                   family = "Duck-Mayr",
                   email = "j.duckmayr@gmail.com",
-                  role = c("aut", "cre"))
+                  role = c("aut", "cre"),
+                  comment = c(ORCID = "0000-0002-2231-1294"))
 Description: The Rcpp package provides a C++ library to make it easier
     to use C++ with R. R and Rcpp provide functions for a variety of
     statistical distributions. Several R packages make functions
