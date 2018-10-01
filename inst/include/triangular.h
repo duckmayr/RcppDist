@@ -3,7 +3,8 @@
 
 // Scalar Versions
 
-inline double d_tri(double x, double a, double b, double c, int log_p = 0) {
+inline double d_tri(const double x, const double a, const double b,
+        const double c, const int log_p = 0) {
     if ( x < a ) {
         if ( log_p ) {
             return R_NegInf;
@@ -36,8 +37,8 @@ inline double d_tri(double x, double a, double b, double c, int log_p = 0) {
     }
 }
 
-inline double p_tri(double x, double a, double b, double c,
-        int lower_tail = 1, int log_p = 0) {
+inline double p_tri(const double x, const double a, const double b,
+        const double c, const int lower_tail = 1, const int log_p = 0) {
     if ( x < a ) {
         if ( log_p ) {
             if ( lower_tail ) {
@@ -88,23 +89,24 @@ inline double p_tri(double x, double a, double b, double c,
     }
 }
 
-inline double q_tri(double p, double a, double b, double c,
-        int lower_tail = 1, int log_p = 0) {
+inline double q_tri(const double p, const double a, const double b,
+        const double c, const int lower_tail = 1, const int log_p = 0) {
     double c_a = c - a;
     double b_a = b - a;
+    double prob = p;
     if ( log_p ) {
-        p = exp(p);
+        prob = exp(prob);
     }
     if ( !lower_tail ) {
-        p = 1.0 - p;
+        prob = 1.0 - prob;
     }
-    if ( p < (c_a / b_a ) ) {
-        return a + sqrt(b_a * c_a * p);
+    if ( prob < (c_a / b_a ) ) {
+        return a + sqrt(b_a * c_a * prob);
     }
-    return b - sqrt(b_a * (b - c) * (1 - p));
+    return b - sqrt(b_a * (b - c) * (1 - prob));
 }
 
-inline double r_tri(double a, double b, double c) {
+inline double r_tri(const double a, const double b, const double c) {
     return q_tri(R::runif(0.0, 1.0), a, b, c);
 }
 
@@ -112,8 +114,8 @@ inline double r_tri(double a, double b, double c) {
 
 // NumericVector versions:
 
-inline Rcpp::NumericVector dtri(Rcpp::NumericVector x, double a, double b,
-        double c, bool log_p = false) {
+inline Rcpp::NumericVector dtri(const Rcpp::NumericVector& x, const double a,
+        const double b, const double c, const bool log_p = false) {
     int n = x.size();
     Rcpp::NumericVector result(n);
     for ( int i = 0; i < n; ++i ) {
@@ -122,8 +124,9 @@ inline Rcpp::NumericVector dtri(Rcpp::NumericVector x, double a, double b,
     return result;
 }
 
-inline Rcpp::NumericVector ptri(Rcpp::NumericVector x, double a, double b,
-        double c, bool lower_tail = true, bool log_p = false) {
+inline Rcpp::NumericVector ptri(const Rcpp::NumericVector& x, const double a,
+        const double b, const double c, const bool lower_tail = true,
+        const bool log_p = false) {
     int n = x.size();
     Rcpp::NumericVector result(n);
     for ( int i = 0; i < n; ++i ) {
@@ -132,8 +135,9 @@ inline Rcpp::NumericVector ptri(Rcpp::NumericVector x, double a, double b,
     return result;
 }
 
-inline Rcpp::NumericVector qtri(Rcpp::NumericVector p, double a, double b,
-        double c, bool lower_tail = true, bool log_p = false) {
+inline Rcpp::NumericVector qtri(const Rcpp::NumericVector& p, const double a,
+        const double b, const double c, const bool lower_tail = true,
+        const bool log_p = false) {
     int n = p.size();
     Rcpp::NumericVector result(n);
     for ( int i = 0; i < n; ++i ) {
@@ -142,7 +146,8 @@ inline Rcpp::NumericVector qtri(Rcpp::NumericVector p, double a, double b,
     return result;
 }
 
-inline Rcpp::NumericVector rtri(int n, double a, double b, double c) {
+inline Rcpp::NumericVector rtri(const int n, const double a, const double b,
+        const double c) {
     Rcpp::NumericVector result(n);
     for ( int i = 0; i < n; ++i ) {
         result[i] = r_tri(a, b, c);

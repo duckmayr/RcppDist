@@ -3,11 +3,11 @@
 
 #include <mvnorm.h>
 
-inline arma::vec dmvt(const arma::mat& x, const arma::vec& mu, arma::mat S,
-        const double df, const bool log_p = false) {
+inline arma::vec dmvt(const arma::mat& x, const arma::vec& mu,
+        const arma::mat& S, const double df, const bool log_p = false) {
     arma::uword n = x.n_rows, m = x.n_cols;
     double det_S = arma::det(S);
-    S = S.i();
+    arma::mat S_inv = S.i();
     arma::vec result(n);
     arma::rowvec X(m);
     if ( log_p ) {
@@ -15,7 +15,7 @@ inline arma::vec dmvt(const arma::mat& x, const arma::vec& mu, arma::mat S,
         P -= ( (m * 0.5) * (log(df) + log(M_PI)) + 0.5 * log(det_S) );
         for ( arma::uword i = 0; i < n; ++i ) {
             X = x.row(i) - mu.t();
-            result[i] = arma::as_scalar(P - ((df + m) * 0.5) * log(1.0 + (1.0 / df) * X * S * X.t()));
+            result[i] = arma::as_scalar(P - ((df + m) * 0.5) * log(1.0 + (1.0 / df) * X * S_inv * X.t()));
         }
         return result;
     }
@@ -23,7 +23,7 @@ inline arma::vec dmvt(const arma::mat& x, const arma::vec& mu, arma::mat S,
     P /= (R::gammafn(df*0.5) * pow(df, m*0.5) * pow(M_PI, m*0.5) * sqrt(det_S));
     for ( arma::uword i = 0; i < n; ++i ) {
         X = x.row(i) - mu.t();
-        result[i] = arma::as_scalar(P/pow(1.0+(1.0/df)*X*S*X.t(), (df+m)*0.5));
+        result[i] = arma::as_scalar(P/pow(1.0+(1.0/df) * X * S_inv * X.t(), (df+m) * 0.5));
     }
     return result;
 }

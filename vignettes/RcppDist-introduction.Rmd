@@ -141,30 +141,36 @@ Much like distributions in R, functions are prefixed by d, p, q, and r to mean d
 The four parameter beta distribution is a beta distribution supported over an interval $[a, b]$ rather than only $[0, 1]$. The functions provided in this header are:
 
 ```{Rcpp 4beta, eval = FALSE}
-Rcpp::NumericVector d4beta(Rcpp::NumericVector x, double shape1,
-    double shape2, double a, double b, bool log_p = false)
-    
-Rcpp::NumericVector p4beta(Rcpp::NumericVector q, double shape1,
-    double shape2, double a, double b, bool lower_tail = true,
-    bool log_p = false)
-    
-Rcpp::NumericVector q4beta(Rcpp::NumericVector p, double shape1,
-    double shape2, double a, double b, bool lower_tail = true,
-    bool log_p = false)
-    
-Rcpp::NumericVector r4beta(int n, double shape1, double shape2,
-    double a, double b)
-    
-double d_4beta(double x, double shape1, double shape2, double a,
-    double b, int log_p = 0)
-    
-double p_4beta(double q, double shape1, double shape2,
-    double a, double b, int lower_tail = 1, int log_p = 0)
-    
-double q_4beta(double p, double shape1, double shape2,
-    double a, double b, int lower_tail = 1, int log_p = 0)
-    
-double r_4beta(double shape1, double shape2, double a, double b)
+Rcpp::NumericVector d4beta(const Rcpp::NumericVector& x,
+        const double shape1, const double shape2, const double a,
+        const double b, const bool log_p = false)
+
+Rcpp::NumericVector p4beta(const Rcpp::NumericVector& q,
+        const double shape1, const double shape2, const double a,
+        const double b, const bool lower_tail = true,
+        const bool log_p = false)
+
+Rcpp::NumericVector q4beta(const Rcpp::NumericVector& p,
+        const double shape1, const double shape2, const double a,
+        const double b, const bool lower_tail = true,
+        const bool log_p = false)
+
+Rcpp::NumericVector r4beta(const int n, const double shape1,
+        const double shape2, const double a, const double b)
+
+double d_4beta(const double x, const double shape1, const double shape2,
+        const double a, const double b, const int log_p = 0)
+
+double p_4beta(const double q, const double shape1, const double shape2,
+        const double a, const double b, const int lower_tail = 1,
+        const int log_p = 0)
+
+double q_4beta(const double p, const double shape1, const double shape2,
+        const double a, const double b, const int lower_tail = 1,
+        const int log_p = 0)
+
+double r_4beta(const double shape1, const double shape2, const double a,
+        const double b)
 ```
     
 Where
@@ -182,27 +188,30 @@ Where
 The location-scale t distribution is a t distribution shifted by a location parameter $\mu$ and scaled by a scaling parameter $\sigma$. The functions provided in this header are:
 
 ```{Rcpp lst, eval = FALSE}
-Rcpp::NumericVector dlst(Rcpp::NumericVector x, double df, double mu,
-    double sigma, bool log_p = false)
-    
-Rcpp::NumericVector plst(Rcpp::NumericVector q, double df, double mu,
-    double sigma, bool lower_tail = true, bool log_p = false)
-    
-Rcpp::NumericVector qlst(Rcpp::NumericVector p, double df, double mu,
-    double sigma, bool lower_tail = true, bool log_p = false)
-    
-Rcpp::NumericVector rlst(int n, double df, double mu, double sigma)
-    
-double d_lst(double x, double df, double mu, double sigma,
-    int log_p = 0)
-    
-double p_lst(double q, double df, double mu, double sigma,
-    int lower_tail = 1, int log_p = 0)
-    
-double q_lst(double p, double df, double mu, double sigma,
-    int lower_tail = 1, int log_p = 0)
-    
-double r_lst(double df, double mu, double sigma)
+Rcpp::NumericVector dlst(const Rcpp::NumericVector& x, const double df,
+        const double mu, const double sigma, const bool log_p = false)
+
+Rcpp::NumericVector plst(const Rcpp::NumericVector& q, const double df,
+        const double mu, const double sigma, const bool lower_tail = true,
+        const bool log_p = false)
+
+Rcpp::NumericVector qlst(const Rcpp::NumericVector& p, const double df,
+        const double mu, const double sigma, const bool lower_tail = true,
+        const bool log_p = false)
+
+Rcpp::NumericVector rlst(const int n, const double df, const double mu,
+        const double sigma)
+
+double d_lst(const double x, const double df, const double mu,
+        const double sigma, const int log_p = 0)
+
+double p_lst(const double q, const double df, const double mu,
+        const double sigma, const int lower_tail = 1, const int log_p = 0)
+
+double q_lst(const double p, const double df, const double mu,
+        const double sigma, const int lower_tail = 1, const int log_p = 0) 
+
+double r_lst(const double df, const double mu, const double sigma)
 ```
     
 Where
@@ -221,30 +230,34 @@ Where
 The truncated normal distribution is a normal distribution supported over an interval $[a, b]$ rather than $(-\infty, \infty)$. The functions provided in this header are:
 
 ```{Rcpp truncnorm, eval = FALSE}
-Rcpp::NumericVector dtruncnorm(Rcpp::NumericVector x, double mu,
-    double sigma, double a, double b, bool log_p = false)
-    
-Rcpp::NumericVector ptruncnorm(Rcpp::NumericVector x, double mu,
-    double sigma, double a, double b, bool lower_tail = true,
-    bool log_p = false)
-    
-Rcpp::NumericVector qtruncnorm(Rcpp::NumericVector p, double mu,
-    double sigma, double a, double b, bool lower_tail = true,
-    bool log_p = false)
-    
-Rcpp::NumericVector rtruncnorm(int n, double mu, double sigma,
-    double a, double b)
-    
-double d_truncnorm(double x, double mu, double sigma, double a,
-    double b, int log_p = 0)
-    
-double p_truncnorm(double x, double mu, double sigma, double a, double b,
-    int lower_tail = 1, int log_p = 0)
-    
-double q_truncnorm(double p, double mu, double sigma, double a, double b,
-    int lower_tail = 1, int log_p = 0)
-    
-double r_truncnorm(double mu, double sigma, double a, double b)
+Rcpp::NumericVector dtruncnorm(const Rcpp::NumericVector& x,
+        const double mu, const double sigma, const double a, const double b,
+        const bool log_p = false) 
+
+Rcpp::NumericVector ptruncnorm(const Rcpp::NumericVector& x,
+        const double mu, const double sigma, const double a, const double b,
+        const bool lower_tail = true, const bool log_p = false) 
+
+Rcpp::NumericVector qtruncnorm(const Rcpp::NumericVector& p,
+        const double mu, const double sigma, const double a, const double b,
+        const bool lower_tail = true, const bool log_p = false) 
+
+Rcpp::NumericVector rtruncnorm(const int n, const double mu,
+        const double sigma, const double a, const double b) 
+
+double d_truncnorm(const double x, const double mu, const double sigma,
+        const double a, const double b, const int log_p = 0) 
+
+double p_truncnorm(const double x, const double mu, const double sigma,
+        const double a, const double b, const int lower_tail = 1,
+        const int log_p = 0) 
+
+double q_truncnorm(const double p, const double mu, const double sigma,
+        const double a, const double b, const int lower_tail = 1,
+        const int log_p = 0) 
+
+double r_truncnorm(const double mu, const double sigma, const double a,
+        const double b)
 ```
     
 Where
@@ -263,26 +276,31 @@ Where
 The truncated t distribution is a t distribution supported over an interval $[a, b]$ rather than $(-\infty, \infty)$. The functions provided in this header are:
 
 ```{Rcpp trunct, eval = FALSE}
-Rcpp::NumericVector dtrunct(Rcpp::NumericVector x, double df,
-    double a, double b, bool log_p = false)
-    
-Rcpp::NumericVector ptrunct(Rcpp::NumericVector x, double df,
-    double a, double b, bool lower_tail = true, bool log_p = false)
-    
-Rcpp::NumericVector qtrunct(Rcpp::NumericVector p, double df,
-    double a, double b, bool lower_tail = true, bool log_p = false)
-    
-Rcpp::NumericVector rtrunct(int n, double df, double a, double b)
-    
-double d_trunct(double x, double df, double a, double b, int log_p = 0)
-    
-double p_trunct(double x, double df, double a, double b,
-    int lower_tail = 1, int log_p = 0)
-    
-double q_trunct(double p, double df, double a, double b,
-    int lower_tail = 1, int log_p = 0)
-    
-double r_trunct(double df, double a, double b)
+Rcpp::NumericVector dtrunct(const Rcpp::NumericVector& x,
+        const double df, const double a, const double b,
+        const bool log_p = false) 
+
+Rcpp::NumericVector ptrunct(const Rcpp::NumericVector& x,
+        const double df, const double a, const double b,
+        const bool lower_tail = true, const bool log_p = false) 
+
+Rcpp::NumericVector qtrunct(const Rcpp::NumericVector& p,
+        const double df, const double a, const double b,
+        const bool lower_tail = true, const bool log_p = false) 
+
+Rcpp::NumericVector rtrunct(const int n, const double df,
+        const double a, const double b) 
+
+double d_trunct(const double x, const double df, const double a,
+        const double b, const int log_p = 0) 
+
+double p_trunct(const double x, const double df, const double a,
+        const double b, const int lower_tail = 1, const int log_p = 0) 
+
+double q_trunct(const double p, const double df, const double a,
+        const double b, const int lower_tail = 1, const int log_p = 0) 
+
+double r_trunct(const double df, const double a, const double b) 
 ```
     
 Where
@@ -300,31 +318,37 @@ Where
 The truncated location-scale t distribution is a location-scale t distribution supported over an interval $[a, b]$ rather than $(-\infty, \infty)$. The functions provided in this header are:
 
 ```{Rcpp trunclst, eval = FALSE}
-Rcpp::NumericVector dtrunclst(Rcpp::NumericVector x, double df,
-    double mu, double sigma, double a, double b, bool log_p = false)
-    
-Rcpp::NumericVector ptrunclst(Rcpp::NumericVector x, double df,
-    double mu, double sigma, double a, double b, bool lower_tail = true,
-    bool log_p = false)
-    
-Rcpp::NumericVector qtrunclst(Rcpp::NumericVector p, double df,
-    double mu, double sigma, double a, double b, bool lower_tail = true,
-    bool log_p = false)
-    
-Rcpp::NumericVector rtrunclst(int n, double df, double mu, double sigma,
-    double a, double b)
-    
-double d_trunclst(double x, double df, double mu, double sigma, double a,
-    double b, int log_p = 0)
-    
-double p_trunclst(double x, double df, double mu, double sigma, double a,
-    double b, int lower_tail = 1, int log_p = 0)
-    
-double q_trunclst(double p, double df, double mu, double sigma,
-    double a, double b, int lower_tail = 1, int log_p = 0)
-    
-double r_trunclst(double df, double mu, double sigma,
-    double a, double b)
+Rcpp::NumericVector dtrunclst(const Rcpp::NumericVector& x,
+        const double df, const double mu, const double sigma, const double a,
+        const double b, const bool log_p = false) 
+
+Rcpp::NumericVector ptrunclst(const Rcpp::NumericVector& x,
+        const double df, const double mu, const double sigma, const double a,
+        const double b, const bool lower_tail = true,
+        const bool log_p = false) 
+
+Rcpp::NumericVector qtrunclst(const Rcpp::NumericVector& p,
+        const double df, const double mu, const double sigma, const double a,
+        const double b, const bool lower_tail = true,
+        const bool log_p = false) 
+
+Rcpp::NumericVector rtrunclst(const int n, const double df,
+        const double mu, const double sigma, const double a, const double b) 
+
+double d_trunclst(const double x, const double df, const double mu,
+        const double sigma, const double a, const double b,
+        const int log_p = 0) 
+
+double p_trunclst(const double x, const double df, const double mu,
+        const double sigma, const double a, const double b,
+        const int lower_tail = 1, const int log_p = 0) 
+
+double q_trunclst(const double p, const double df, const double mu,
+        const double sigma, const double a, const double b,
+        const int lower_tail = 1, const int log_p = 0) 
+
+double r_trunclst(const double df, const double mu, const double sigma,
+        const double a, const double b) 
 ```
     
 Where
@@ -344,26 +368,30 @@ Where
 The triangle (or triangular) distribution is supported over an interval $[a, b]$ with a mode $c$; as the name suggests, the density function is shaped like a triangle with vertices at $a$, $b$, and $c$. The functions provided in this header are:
 
 ```{Rcpp triangle, eval = FALSE}
-Rcpp::NumericVector dtri(Rcpp::NumericVector x, double a, double b,
-    double c, bool log_p = false)
-    
-Rcpp::NumericVector ptri(Rcpp::NumericVector x, double a, double b,
-    double c, bool lower_tail = true, bool log_p = false)
-    
-Rcpp::NumericVector qtri(Rcpp::NumericVector p, double a, double b,
-    double c, bool lower_tail = true, bool log_p = false)
-    
-Rcpp::NumericVector rtri(int n, double a, double b, double c)
-    
-double d_tri(double x, double a, double b, double c, int log_p = 0)
-    
-double p_tri(double x, double a, double b, double c,
-    int lower_tail = 1, int log_p = 0)
-    
-double q_tri(double p, double a, double b, double c,
-    int lower_tail = 1, int log_p = 0)
-    
-double r_tri(double a, double b, double c)
+double d_tri(const double x, const double a, const double b,
+        const double c, const int log_p = 0) 
+
+double p_tri(const double x, const double a, const double b,
+        const double c, const int lower_tail = 1, const int log_p = 0) 
+
+double q_tri(const double p, const double a, const double b,
+        const double c, const int lower_tail = 1, const int log_p = 0) 
+
+double r_tri(const double a, const double b, const double c) 
+
+Rcpp::NumericVector dtri(const Rcpp::NumericVector& x, const double a,
+        const double b, const double c, const bool log_p = false) 
+
+Rcpp::NumericVector ptri(const Rcpp::NumericVector& x, const double a,
+        const double b, const double c, const bool lower_tail = true,
+        const bool log_p = false) 
+
+Rcpp::NumericVector qtri(const Rcpp::NumericVector& p, const double a,
+        const double b, const double c, const bool lower_tail = true,
+        const bool log_p = false) 
+
+Rcpp::NumericVector rtri(const int n, const double a, const double b,
+        const double c)
 ```
     
 Where
@@ -381,11 +409,11 @@ Where
 The multivariate normal distribution is a generalization of the normal distribution to multiple dimensions. Then each draw is a vector, the mean parameter $\mu$ is a vector, and rather than a scalar standard deviation parameter $\sigma$, we have a covariance matrix $\Sigma$ (or here denoted $S$). The functions provided in this header are:
 
 ```{Rcpp mvnorm, eval = FALSE}
-arma::vec dmvnorm(const arma::mat& x, const arma::vec& mu, arma::mat S,
-    bool log_p = false)
-    
+arma::vec dmvnorm(const arma::mat& x, const arma::vec& mu,
+        const arma::mat& S, const bool log_p = false) 
+
 arma::mat rmvnorm(const arma::uword n, const arma::vec& mu,
-    const arma::mat& S)
+        const arma::mat& S) 
 ```
     
 Where
@@ -401,11 +429,11 @@ Where
 The multivariate t distribution is a generalization of the t distribution to multiple dimensions. Then each draw is a vector, and in addition to the degrees of freedom,  we have a correlation matrix $\Sigma$ (or here denoted $S$), and this implementation allows for a location vector $\mu$. The functions provided in this header are:
 
 ```{Rcpp mvt, eval = FALSE}
-arma::vec dmvt(const arma::mat& x, const arma::vec& mu, arma::mat S,
-    const double df, const bool log_p = false)
-    
+arma::vec dmvt(const arma::mat& x, const arma::vec& mu,
+        const arma::mat& S, const double df, const bool log_p = false) 
+
 arma::mat rmvt(const arma::uword n, const arma::vec& mu,
-    const arma::mat& S, const double df)
+        const arma::mat& S, const double df)
 ```
     
 Where

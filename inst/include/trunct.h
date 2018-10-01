@@ -3,8 +3,9 @@
 
 // Vector versions:
 
-inline Rcpp::NumericVector dtrunct(Rcpp::NumericVector x, double df,
-        double a, double b, bool log_p = false) {
+inline Rcpp::NumericVector dtrunct(const Rcpp::NumericVector& x,
+        const double df, const double a, const double b,
+        const bool log_p = false) {
     int n = x.size();
     Rcpp::NumericVector result(n);
     double scale = R::pt(b, df, 1, 0) - R::pt(a, df, 1, 0);
@@ -33,8 +34,9 @@ inline Rcpp::NumericVector dtrunct(Rcpp::NumericVector x, double df,
     return result;
 }
 
-inline Rcpp::NumericVector ptrunct(Rcpp::NumericVector x, double df,
-        double a, double b, bool lower_tail = true, bool log_p = false) {
+inline Rcpp::NumericVector ptrunct(const Rcpp::NumericVector& x,
+        const double df, const double a, const double b,
+        const bool lower_tail = true, const bool log_p = false) {
     int n = x.size();
     Rcpp::NumericVector result(n);
     double F_a = R::pt(a, df, 1, 0);
@@ -102,8 +104,9 @@ inline Rcpp::NumericVector ptrunct(Rcpp::NumericVector x, double df,
 }
 
 
-inline Rcpp::NumericVector qtrunct(Rcpp::NumericVector p, double df,
-        double a, double b, bool lower_tail = true, bool log_p = false) {
+inline Rcpp::NumericVector qtrunct(const Rcpp::NumericVector& p,
+        const double df, const double a, const double b,
+        const bool lower_tail = true, const bool log_p = false) {
     int n = p.size();
     Rcpp::NumericVector probs = Rcpp::clone(p);
     if ( log_p ) {
@@ -122,7 +125,8 @@ inline Rcpp::NumericVector qtrunct(Rcpp::NumericVector p, double df,
     return result;
 }
 
-inline Rcpp::NumericVector rtrunct(int n, double df, double a, double b) {
+inline Rcpp::NumericVector rtrunct(const int n, const double df,
+        const double a, const double b) {
     return qtrunct(Rcpp::runif(n), df, a, b);
 }
 
@@ -130,7 +134,8 @@ inline Rcpp::NumericVector rtrunct(int n, double df, double a, double b) {
 
 // Scalar versions:
 
-inline double d_trunct(double x, double df, double a, double b, int log_p = 0) {
+inline double d_trunct(const double x, const double df, const double a,
+        const double b, const int log_p = 0) {
     if ( x < a || x > b ) {
         return log_p ? R_NegInf : 0.0;
     }
@@ -141,8 +146,8 @@ inline double d_trunct(double x, double df, double a, double b, int log_p = 0) {
     return R::dt(x, df, 0) / scale;
 }
     
-inline double p_trunct(double x, double df, double a, double b,
-        int lower_tail = 1, int log_p = 0) {
+inline double p_trunct(const double x, const double df, const double a,
+        const double b, const int lower_tail = 1, const int log_p = 0) {
     double F_a = R::pt(a, df, 1, 0);
     double F_b = R::pt(b, df, 1, 0);
     if ( lower_tail ) {
@@ -195,21 +200,22 @@ inline double p_trunct(double x, double df, double a, double b,
     }
 }
 
-inline double q_trunct(double p, double df, double a, double b,
-        int lower_tail = 1, int log_p = 0) {
+inline double q_trunct(const double p, const double df, const double a,
+        const double b, const int lower_tail = 1, const int log_p = 0) {
+    double prob = p;
     if ( log_p ) {
-        p = exp(p);
+        prob = exp(prob);
     }
     if ( !lower_tail ) {
-        p = 1.0 - p;
+        prob = 1.0 - prob;
     }
     double F_a = R::pt(a, df, 1, 0);
     double F_b = R::pt(b, df, 1, 0);
-    double q = R::qt(F_a + p * (F_b - F_a), df, 1, 0);
+    double q = R::qt(F_a + prob * (F_b - F_a), df, 1, 0);
     return std::min(std::max(a, q), b);
 }
 
-inline double r_trunct(double df, double a, double b) {
+inline double r_trunct(const double df, const double a, const double b) {
     return q_trunct(R::runif(0.0, 1.0), df, a, b);
 }
 

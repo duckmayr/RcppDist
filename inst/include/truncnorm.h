@@ -3,8 +3,9 @@
 
 // Vector versions:
 
-inline Rcpp::NumericVector dtruncnorm(Rcpp::NumericVector x, double mu,
-        double sigma, double a, double b, bool log_p = false) {
+inline Rcpp::NumericVector dtruncnorm(const Rcpp::NumericVector& x,
+        const double mu, const double sigma, const double a, const double b,
+        const bool log_p = false) {
     int n = x.size();
     Rcpp::NumericVector result(n);
     double scale = R::pnorm(b, mu, sigma, 1, 0) - R::pnorm(a, mu, sigma, 1, 0);
@@ -33,9 +34,9 @@ inline Rcpp::NumericVector dtruncnorm(Rcpp::NumericVector x, double mu,
     return result;
 }
 
-inline Rcpp::NumericVector ptruncnorm(Rcpp::NumericVector x, double mu,
-        double sigma, double a, double b, bool lower_tail = true,
-        bool log_p = false) {
+inline Rcpp::NumericVector ptruncnorm(const Rcpp::NumericVector& x,
+        const double mu, const double sigma, const double a, const double b,
+        const bool lower_tail = true, const bool log_p = false) {
     int n = x.size();
     Rcpp::NumericVector result(n);
     double F_a = R::pnorm(a, mu, sigma, 1, 0);
@@ -89,9 +90,9 @@ inline Rcpp::NumericVector ptruncnorm(Rcpp::NumericVector x, double mu,
 }
 
 
-inline Rcpp::NumericVector qtruncnorm(Rcpp::NumericVector p, double mu,
-        double sigma, double a, double b, bool lower_tail = true,
-        bool log_p = false) {
+inline Rcpp::NumericVector qtruncnorm(const Rcpp::NumericVector& p,
+        const double mu, const double sigma, const double a, const double b,
+        const bool lower_tail = true, const bool log_p = false) {
     int n = p.size();
     Rcpp::NumericVector probs = Rcpp::clone(p);
     if ( log_p ) {
@@ -110,8 +111,8 @@ inline Rcpp::NumericVector qtruncnorm(Rcpp::NumericVector p, double mu,
     return result;
 }
 
-inline Rcpp::NumericVector rtruncnorm(int n, double mu, double sigma,
-        double a, double b) {
+inline Rcpp::NumericVector rtruncnorm(const int n, const double mu,
+        const double sigma, const double a, const double b) {
     return qtruncnorm(Rcpp::runif(n), mu, sigma, a, b);
 }
 
@@ -119,8 +120,8 @@ inline Rcpp::NumericVector rtruncnorm(int n, double mu, double sigma,
 
 // Scalar versions:
 
-inline double d_truncnorm(double x, double mu, double sigma, double a,
-        double b, int log_p = 0) {
+inline double d_truncnorm(const double x, const double mu, const double sigma,
+        const double a, const double b, const int log_p = 0) {
     if ( x < a || x > b ) {
         return log_p ? R_NegInf : 0.0;
     }
@@ -131,8 +132,9 @@ inline double d_truncnorm(double x, double mu, double sigma, double a,
     return R::dnorm(x, mu, sigma, 0) / scale;
 }
     
-inline double p_truncnorm(double x, double mu, double sigma, double a, double b,
-        int lower_tail = 1, int log_p = 0) {
+inline double p_truncnorm(const double x, const double mu, const double sigma,
+        const double a, const double b, const int lower_tail = 1,
+        const int log_p = 0) {
     double F_a = R::pnorm(a, mu, sigma, 1, 0);
     double F_b = R::pnorm(b, mu, sigma, 1, 0);
     if ( lower_tail ) {
@@ -185,21 +187,24 @@ inline double p_truncnorm(double x, double mu, double sigma, double a, double b,
     }
 }
 
-inline double q_truncnorm(double p, double mu, double sigma, double a, double b,
-        int lower_tail = 1, int log_p = 0) {
+inline double q_truncnorm(const double p, const double mu, const double sigma,
+        const double a, const double b, const int lower_tail = 1,
+        const int log_p = 0) {
+    double prob = p;
     if ( log_p ) {
-        p = exp(p);
+        prob = exp(prob);
     }
     if ( !lower_tail ) {
-        p = 1 - p;
+        prob = 1 - prob;
     }
     double F_a = R::pnorm(a, mu, sigma, 1, 0);
     double F_b = R::pnorm(b, mu, sigma, 1, 0);
-    double q = R::qnorm(F_a + p * (F_b - F_a), mu, sigma, 1, 0);
+    double q = R::qnorm(F_a + prob * (F_b - F_a), mu, sigma, 1, 0);
     return std::min(std::max(a, q), b);
 }
 
-inline double r_truncnorm(double mu, double sigma, double a, double b) {
+inline double r_truncnorm(const double mu, const double sigma, const double a,
+        const double b) {
     return q_truncnorm(R::runif(0.0, 1.0), mu, sigma, a, b);
 }
 
