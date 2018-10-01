@@ -13,11 +13,17 @@ r:
   - oldrel
   - devel
   
+addons:
+  apt:
+    packages:
+      - ghostscript
+  
 before_install:
   - if [[ "$OSTYPE" != "linux-gnu" ]]; then sudo tlmgr install framed titling; fi
   
 brew_packages:
   - libgit2
+  - ghostscript
 
 r_packages:
   - covr
