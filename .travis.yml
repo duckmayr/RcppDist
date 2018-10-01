@@ -13,6 +13,9 @@ r:
   - oldrel
   - devel
   
+before_install:
+  - tlmgr install framed
+  
 brew_packages:
   - libgit2
 
