@@ -35,9 +35,11 @@ RcppDist provides functions for the following distributions:
     
 Distributions marked with an asterisk rely on RcppArmadillo.
 
-## Including RccpDist in Your Code
+After discussing how to include `RcppDist` headers into your code to use these functions, each function provided by the package is listed (such that you can see the function and argument names, as well as the return and argument types), with a brief explanation.
 
-RcppDist provides several header files you can include in your code. `RcppDist.h` includes all of them, as well as `Rcpp.h` or `RcppArmadillo.h` as appropriate (see "Use Rpp or RcppArmadillo?" below). So, in any C++ file you need to use functions from RcppDist, you can simply use
+# Including RccpDist in Your Code
+
+RcppDist provides several header files you can include in your code. `RcppDist.h` includes all of them, as well as `Rcpp.h` or `RcppArmadillo.h` as appropriate (see "Use Rpp, or RcppArmadillo?" below). So, in any C++ file you need to use functions from RcppDist, you can simply use
 
 ```{Rcpp full-include, eval = FALSE}
 #include <RcppDist.h>
@@ -65,7 +67,7 @@ However, you'll then be responsible for pulling in Rcpp/RcppArmadillo headers as
 | Multivariate t              | mvt.h         |
 | Wishart and Inverse Wishart | wishart.h     |
 
-### Using Rcpp or RcppArmadillo?
+## Using Rcpp, or RcppArmadillo?
 
 Including `RcppDist.h` by default will pull in the RcppArmadillo headers (and therefore the Rcpp headers), as well as the RcppDist headers. If you would prefer to use Rcpp but *not* RcppArmadillo (i.e. include the Rcpp headers but not the RcppArmadillo headers), include the line
 
@@ -75,9 +77,9 @@ Including `RcppDist.h` by default will pull in the RcppArmadillo headers (and th
     
 before any inclusion of `RcppDist.h`, though this will make the asterisked (multivariate and Wishart) distributions unavailable.
 
-### Using RcppDist in a Package
+## Using RcppDist in a Package
 
-#### With Rcpp
+### With Rcpp
 
 To use RcppDist in a package that does not link to RcppArmadillo, you must
 
@@ -85,7 +87,7 @@ To use RcppDist in a package that does not link to RcppArmadillo, you must
 - Add Rcpp to the Imports field of your DESCRIPTION file.
 - Remember to define `RCPPDIST_DONT_USE_ARMA` before any include of `RcppDist.h`.
 
-#### With RcppArmadillo
+### With RcppArmadillo
 
 To use RcppDist in a package that links to RcppArmadillo, you must
 
@@ -93,9 +95,9 @@ To use RcppDist in a package that links to RcppArmadillo, you must
 - Add Rcpp to the Imports field of your DESCRIPTION file.
 - Remember to add the appropriate `PKG_LIBS` flags to `src/Makevars` and `sr/Makevars.win` (see the RcppArmadillo manual for more details).
 
-### Using RcppDist in a Standalone file
+## Using RcppDist in a Standalone file
 
-#### With Rcpp
+### With Rcpp
 
 If you are using RcppDist in a standalone file (i.e., not as part of a package), and you don't want to pull in the Armadillo headers, you'll need
 
@@ -113,7 +115,7 @@ at the top of your file. If you want to pull in just one or more of the distribu
 // [[Rcpp::depends(RcppDist)]]
 ```
 
-#### With RcppArmadillo
+### With RcppArmadillo
 
 If you are using RcppDist in a standalone file (i.e., not as part of a package), and you do want the Armadillo headers, you'll need
 
@@ -132,11 +134,11 @@ at the top of your file. If you want to pull in just one or more of the distribu
 // [[Rcpp::depends(RcppDist)]]
 ```
 
-## RcppDist Functions
+# RcppDist Functions
 
 Much like distributions in R, functions are prefixed by d, p, q, and r to mean density, distribution, quantile, and random number generating functions respectively. Functions that are return double rather than, say, a NumericVector are instead prefixed by d_, p_, q_, and r_. Below are more detailed descriptions of the functions provided by each header.
 
-### 4beta.h (Four Parameter Beta Distribution)
+## 4beta.h (Four Parameter Beta Distribution)
 
 The four parameter beta distribution is a beta distribution supported over an interval $[a, b]$ rather than only $[0, 1]$. The functions provided in this header are:
 
@@ -183,7 +185,7 @@ Where
   - `log_p` is a `bool` or `int` (the default is `false`/0); if `true` (or > 0), the probabilities are given as $\log(p)$
   - `lower_tail` is a `bool` or `int`; if `true` (or > 0), the probabilities are $P[X \leq x]$, otherwise, $P[X > x]$.
 
-### lst.h (Location-Scale t Distribution)
+## lst.h (Location-Scale t Distribution)
 
 The location-scale t distribution is a t distribution shifted by a location parameter $\mu$ and scaled by a scaling parameter $\sigma$. The functions provided in this header are:
 
@@ -225,7 +227,7 @@ Where
   - `log_p` is a `bool` or `int` (the default is `false`/0); if `true` (or > 0), the probabilities are given as $\log(p)$
   - `lower_tail` is a `bool` or `int`; if `true` (or > 0), the probabilities are $P[X \leq x]$, otherwise, $P[X > x]$.
 
-### truncnorm.h (Truncated Normal Distribution)
+## truncnorm.h (Truncated Normal Distribution)
 
 The truncated normal distribution is a normal distribution supported over an interval $[a, b]$ rather than $(-\infty, \infty)$. The functions provided in this header are:
 
@@ -271,7 +273,7 @@ Where
   - `log_p` is a `bool` or `int` (the default is `false`/0); if `true` (or > 0), the probabilities are given as $\log(p)$
   - `lower_tail` is a `bool` or `int`; if `true` (or > 0), the probabilities are $P[X \leq x]$, otherwise, $P[X > x]$.
 
-### trunct.h (Truncated t Distribution)
+## trunct.h (Truncated t Distribution)
 
 The truncated t distribution is a t distribution supported over an interval $[a, b]$ rather than $(-\infty, \infty)$. The functions provided in this header are:
 
@@ -313,7 +315,7 @@ Where
   - `log_p` is a `bool` or `int` (the default is `false`/0); if `true` (or > 0), the probabilities are given as $\log(p)$
   - `lower_tail` is a `bool` or `int`; if `true` (or > 0), the probabilities are $P[X \leq x]$, otherwise, $P[X > x]$.
 
-### trunclst.h (Truncated Location-Scale t Distribution)
+## trunclst.h (Truncated Location-Scale t Distribution)
 
 The truncated location-scale t distribution is a location-scale t distribution supported over an interval $[a, b]$ rather than $(-\infty, \infty)$. The functions provided in this header are:
 
@@ -363,7 +365,7 @@ Where
   - `log_p` is a `bool` or `int` (the default is `false`/0); if `true` (or > 0), the probabilities are given as $\log(p)$
   - `lower_tail` is a `bool` or `int`; if `true` (or > 0), the probabilities are $P[X \leq x]$, otherwise, $P[X > x]$.
 
-### triangular.h (Triangle Distribution)
+## triangular.h (Triangle Distribution)
 
 The triangle (or triangular) distribution is supported over an interval $[a, b]$ with a mode $c$; as the name suggests, the density function is shaped like a triangle with vertices at $a$, $b$, and $c$. The functions provided in this header are:
 
@@ -404,7 +406,7 @@ Where
   - `log_p` is a `bool` or `int` (the default is `false`/0); if `true` (or > 0), the probabilities are given as $\log(p)$
   - `lower_tail` is a `bool` or `int`; if `true` (or > 0), the probabilities are $P[X \leq x]$, otherwise, $P[X > x]$.
 
-### mvnorm.h (Multivariate Normal Distribution)
+## mvnorm.h (Multivariate Normal Distribution)
 
 The multivariate normal distribution is a generalization of the normal distribution to multiple dimensions. Then each draw is a vector, the mean parameter $\mu$ is a vector, and rather than a scalar standard deviation parameter $\sigma$, we have a covariance matrix $\Sigma$ (or here denoted $S$). The functions provided in this header are:
 
@@ -424,7 +426,7 @@ Where
   - `S` is the covariance matrix
   - `log_p` is a `bool` (the default is `false`); if `true`, the probabilities are given as $\log(p)$
 
-### mvt.h (Multivariate t Distribution)
+## mvt.h (Multivariate t Distribution)
 
 The multivariate t distribution is a generalization of the t distribution to multiple dimensions. Then each draw is a vector, and in addition to the degrees of freedom,  we have a correlation matrix $\Sigma$ (or here denoted $S$), and this implementation allows for a location vector $\mu$. The functions provided in this header are:
 
@@ -444,7 +446,7 @@ Where
   - `S` is the correlation matrix
   - `log_p` is a `bool` (the default is `false`); if `true`, the probabilities are given as $\log(p)$
 
-### wishart.h (Wishart and Inverse Wishart Distributions)
+## wishart.h (Wishart and Inverse Wishart Distributions)
 
 The Wishart distribution is a generalization of the gamma distribution to multiple dimensions defined over symmetric, nonnegative-definite random matrices. Its parameters are the degrees of freedom and a scale matrix $S$. If $X \sim$ Wishart(df, $S$), then $X^{-1} \sim$ Inverse Wishart(df, $S^{-1}$). Due to their use in the density functions for these distributions, a multivariate gamma function and logged multivariate gamma function are also provided. Note that for now, al functions for this distribution are designed to deal with only one random matrix. The functions provided in this header are:
 
