@@ -1,7 +1,7 @@
 #ifndef RCPPDIST_WISHART_H
 #define RCPPDIST_WISHART_H
 
-inline double mvgamma(const int p, const int x) {
+inline double mvgamma(const int p, const double x) {
     double result = pow(M_PI, (p * (p - 1) * 0.25));
     for ( int j = 1; j < (p + 1); ++j ) {
         result *= R::gammafn(x - ((j - 1.0) * 0.5));
@@ -9,7 +9,7 @@ inline double mvgamma(const int p, const int x) {
     return result;
 }
 
-inline double lmvgamma(const int p, const int x) {
+inline double lmvgamma(const int p, const double x) {
     double result = (p * (p - 1) * 0.25) * log(M_PI);
     for ( int j = 1; j < (p + 1); ++j ) {
         result += R::lgammafn(x - ((j - 1.0) * 0.5));
