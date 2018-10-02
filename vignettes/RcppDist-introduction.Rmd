@@ -83,17 +83,19 @@ before any inclusion of `RcppDist.h`, though this will make the asterisked (mult
 
 To use RcppDist in a package that does not link to RcppArmadillo, you must
 
-- Add Rcpp and RcppDist to the LinkingTo field of your DESCRIPTION file.
-- Add Rcpp to the Imports field of your DESCRIPTION file.
+- Set up your package to use `Rcpp`, such as via `Rcpp::Rcpp.package.skeleton(your_package)` or `devtools::use_rcpp(your_package)`.\footnote{See the Rcpp-package vignette from Rcpp for more details.}
+- Add RcppDist to the LinkingTo field of your DESCRIPTION file.
+- In any C++ file that calls a `RcppDist` function, add `#include <RcppDist.h>` (or a more specific header from the package such as `lst.h` and `Rcpp.h`)
 - Remember to define `RCPPDIST_DONT_USE_ARMA` before any include of `RcppDist.h`.
 
 ### With RcppArmadillo
 
 To use RcppDist in a package that links to RcppArmadillo, you must
 
-- Add Rcpp, RcppArmadillo, and RcppDist to the LinkingTo field of your DESCRIPTION file.
-- Add Rcpp to the Imports field of your DESCRIPTION file.
-- Remember to add the appropriate `PKG_LIBS` flags to `src/Makevars` and `sr/Makevars.win` (see the RcppArmadillo manual for more details).
+- Set up your package to `RcppArmadillo`, such as via  
+`RcppArmadillo::RcppArmadillo.package.skeleton(your_package)`\footnote{See the RcppArmadillo manual or help files for more details, in particular the `RcppArmadillo-package' and `RcppArmadillo.package.skeleton' entries.}
+- Add RcppDist to the LinkingTo field of your DESCRIPTION file.
+- In any C++ file that calls a `RcppDist` function, add `#include <RcppDist.h>` (or a more specific header from the package such as `mvt.h` and `RcppArmadillo.h`)
 
 ## Using RcppDist in a Standalone file
 
@@ -121,8 +123,7 @@ If you are using RcppDist in a standalone file (i.e., not as part of a package),
 
 ```{Rcpp standalone-arma-full, eval = FALSE}
 #include <RcppDist.h>
-// [[Rcpp::depends(RcppArmadillo)]]
-// [[Rcpp::depends(RcppDist)]]
+// [[Rcpp::depends(RcppArmadillo, RcppDist)]]
 ```
     
 at the top of your file. If you want to pull in just one or more of the distribution specific headers, don't forget to also include `RcppArmadillo.h`; as an example:
@@ -130,8 +131,7 @@ at the top of your file. If you want to pull in just one or more of the distribu
 ```{Rcpp standalone-arma-partial, eval = FALSE}
 #include <RcppArmadillo.h>
 #include <mvnorm.h>
-// [[Rcpp::depends(RcppArmadillo)]]
-// [[Rcpp::depends(RcppDist)]]
+// [[Rcpp::depends(RcppArmadillo, RcppDist)]]
 ```
 
 # RcppDist Functions
