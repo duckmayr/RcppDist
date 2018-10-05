@@ -34,4 +34,4 @@ r_packages:
   - rmarkdown
 
 after_success:
-  - Rscript -e 'library(covr); codecov()'
+  - Rscript -e 'library(covr); options(covr.exclude_pattern = "#[[:space:]]*nocov|//[[:space:]]*nocov"); codecov()'
