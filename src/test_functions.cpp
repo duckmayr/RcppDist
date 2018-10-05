@@ -13,7 +13,7 @@ List test_d4beta(NumericVector x, double shape1, double shape2,
         _["DoubleLog"] = d_4beta(x[0], shape1, shape2, a, b, 1),
         _["DoubleNoLog"] = d_4beta(x[0], shape1, shape2, a, b)
     );
-}
+} // nocov
 
 // [[Rcpp::export]]
 List test_p4beta(NumericVector x, double shape1, double shape2,
@@ -28,7 +28,7 @@ List test_p4beta(NumericVector x, double shape1, double shape2,
         _["DoubleLogNoLower"] = p_4beta(x[0], shape1, shape2, a, b, 0, 1),
         _["DoubleNoLogNoLower"] = p_4beta(x[0], shape1, shape2, a, b, 0)
     );
-}
+} // nocov
 
 // [[Rcpp::export]]
 List test_q4beta_nolog(NumericVector x, double shape1, double shape2,
@@ -39,7 +39,7 @@ List test_q4beta_nolog(NumericVector x, double shape1, double shape2,
         _["VectorNoLogNoLower"] = q4beta(x, shape1, shape2, a, b, false),
         _["DoubleNoLogNoLower"] = q_4beta(x[0], shape1, shape2, a, b, 0)
     );
-}
+} // nocov
 
 // [[Rcpp::export]]
 List test_q4beta_log(NumericVector x, double shape1, double shape2,
@@ -50,7 +50,7 @@ List test_q4beta_log(NumericVector x, double shape1, double shape2,
         _["VectorLogNoLower"] = q4beta(x, shape1, shape2, a, b, false, true),
         _["DoubleLogNoLower"] = q_4beta(x[0], shape1, shape2, a, b, 0, 1)
     );
-}
+} // nocov
 
 
 
@@ -64,7 +64,7 @@ List test_dlst(NumericVector x, double df, double mu, double sigma) {
         _["DoubleLog"] = d_lst(x[0], df, mu, sigma, 1),
         _["DoubleNoLog"] = d_lst(x[0], df, mu, sigma)
     );
-}
+} // nocov
 
 // [[Rcpp::export]]
 List test_plst(NumericVector x, double df, double mu, double sigma) {
@@ -78,7 +78,7 @@ List test_plst(NumericVector x, double df, double mu, double sigma) {
         _["DoubleLogNoLower"] = p_lst(x[0], df, mu, sigma, 0, 1),
         _["DoubleNoLogNoLower"] = p_lst(x[0], df, mu, sigma, 0)
     );
-}
+} // nocov
 
 // [[Rcpp::export]]
 List test_qlst_nolog(NumericVector x, double df, double mu, double sigma) {
@@ -88,7 +88,7 @@ List test_qlst_nolog(NumericVector x, double df, double mu, double sigma) {
         _["VectorNoLogNoLower"] = qlst(x, df, mu, sigma, false),
         _["DoubleNoLogNoLower"] = q_lst(x[0], df, mu, sigma, 0)
     );
-}
+} // nocov
 
 // [[Rcpp::export]]
 List test_qlst_log(NumericVector x, double df, double mu, double sigma) {
@@ -98,7 +98,7 @@ List test_qlst_log(NumericVector x, double df, double mu, double sigma) {
         _["VectorLogNoLower"] = qlst(x, df, mu, sigma, false, true),
         _["DoubleLogNoLower"] = q_lst(x[0], df, mu, sigma, 0, 1)
     );
-}
+} // nocov
 
 
 
@@ -113,7 +113,7 @@ List test_dtruncnorm(NumericVector x, double mu, double sigma,
         _["DoubleLog"] = d_truncnorm(x[0], mu, sigma, a, b, 1),
         _["DoubleNoLog"] = d_truncnorm(x[0], mu, sigma, a, b)
     );
-}
+} // nocov
 
 // [[Rcpp::export]]
 List test_ptruncnorm(NumericVector x, double mu, double sigma,
@@ -128,7 +128,7 @@ List test_ptruncnorm(NumericVector x, double mu, double sigma,
         _["DoubleLogNoLower"] = p_truncnorm(x[0], mu, sigma, a, b, 0, 1),
         _["DoubleNoLogNoLower"] = p_truncnorm(x[0], mu, sigma, a, b, 0)
     );
-}
+} // nocov
 
 // [[Rcpp::export]]
 List test_qtruncnorm_nolog(NumericVector x, double mu, double sigma,
@@ -139,7 +139,7 @@ List test_qtruncnorm_nolog(NumericVector x, double mu, double sigma,
         _["VectorNoLogNoLower"] = qtruncnorm(x, mu, sigma, a, b, false),
         _["DoubleNoLogNoLower"] = q_truncnorm(x[0], mu, sigma, a, b, 0)
     );
-}
+} // nocov
 
 // [[Rcpp::export]]
 List test_qtruncnorm_log(NumericVector x, double mu, double sigma,
@@ -150,7 +150,7 @@ List test_qtruncnorm_log(NumericVector x, double mu, double sigma,
         _["VectorLogNoLower"] = qtruncnorm(x, mu, sigma, a, b, false, true),
         _["DoubleLogNoLower"] = q_truncnorm(x[0], mu, sigma, a, b, 0, 1)
     );
-}
+} // nocov
 
 
 
@@ -164,7 +164,7 @@ List test_dtrunct(NumericVector x, double df, double a, double b) {
         _["DoubleLog"] = d_trunct(x[0], df, a, b, 1),
         _["DoubleNoLog"] = d_trunct(x[0], df, a, b)
     );
-}
+} // nocov
 
 // [[Rcpp::export]]
 List test_ptrunct(NumericVector x, double df, double a, double b) {
@@ -178,7 +178,7 @@ List test_ptrunct(NumericVector x, double df, double a, double b) {
         _["DoubleLogNoLower"] = p_trunct(x[0], df, a, b, 0, 1),
         _["DoubleNoLogNoLower"] = p_trunct(x[0], df, a, b, 0)
     );
-}
+} // nocov
 
 // [[Rcpp::export]]
 List test_qtrunct_nolog(NumericVector x, double df, double a, double b) {
@@ -188,7 +188,7 @@ List test_qtrunct_nolog(NumericVector x, double df, double a, double b) {
         _["VectorNoLogNoLower"] = qtrunct(x, df, a, b, false),
         _["DoubleNoLogNoLower"] = q_trunct(x[0], df, a, b, 0)
     );
-}
+} // nocov
 
 // [[Rcpp::export]]
 List test_qtrunct_log(NumericVector x, double df, double a, double b) {
@@ -198,7 +198,7 @@ List test_qtrunct_log(NumericVector x, double df, double a, double b) {
         _["VectorLogNoLower"] = qtrunct(x, df, a, b, false, true),
         _["DoubleLogNoLower"] = q_trunct(x[0], df, a, b, 0, 1)
     );
-}
+} // nocov
 
 
 
@@ -213,7 +213,7 @@ List test_dtrunclst(NumericVector x, double df, double mu, double sigma,
         _["DoubleLog"] = d_trunclst(x[0], df, mu, sigma, a, b, 1),
         _["DoubleNoLog"] = d_trunclst(x[0], df, mu, sigma, a, b)
     );
-}
+} // nocov
 
 // [[Rcpp::export]]
 List test_ptrunclst(NumericVector x, double df, double mu, double sigma,
@@ -228,7 +228,7 @@ List test_ptrunclst(NumericVector x, double df, double mu, double sigma,
         _["DoubleLogNoLower"] = p_trunclst(x[0], df, mu, sigma, a, b, 0, 1),
         _["DoubleNoLogNoLower"] = p_trunclst(x[0], df, mu, sigma, a, b, 0)
     );
-}
+} // nocov
 
 // [[Rcpp::export]]
 List test_qtrunclst_nolog(NumericVector x, double df, double mu, double sigma,
@@ -239,7 +239,7 @@ List test_qtrunclst_nolog(NumericVector x, double df, double mu, double sigma,
         _["VectorNoLogNoLower"] = qtrunclst(x, df, mu, sigma, a, b, false),
         _["DoubleNoLogNoLower"] = q_trunclst(x[0], df, mu, sigma, a, b, 0)
     );
-}
+} // nocov
 
 // [[Rcpp::export]]
 List test_qtrunclst_log(NumericVector x, double df, double mu, double sigma,
@@ -250,7 +250,7 @@ List test_qtrunclst_log(NumericVector x, double df, double mu, double sigma,
         _["VectorLogNoLower"] = qtrunclst(x, df, mu, sigma, a, b, false, true),
         _["DoubleLogNoLower"] = q_trunclst(x[0], df, mu, sigma, a, b, 0, 1)
     );
-}
+} // nocov
 
 
 
@@ -264,7 +264,7 @@ List test_dtri(NumericVector x, double a, double b, double c) {
         _["DoubleLog"] = d_tri(x[0], a, b, c, 1),
         _["DoubleNoLog"] = d_tri(x[0], a, b, c)
     );
-}
+} // nocov
 
 // [[Rcpp::export]]
 List test_ptri(NumericVector x, double a, double b, double c) {
@@ -278,7 +278,7 @@ List test_ptri(NumericVector x, double a, double b, double c) {
         _["DoubleLogNoLower"] = p_tri(x[0], a, b, c, 0, 1),
         _["DoubleNoLogNoLower"] = p_tri(x[0], a, b, c, 0)
     );
-}
+} // nocov
 
 // [[Rcpp::export]]
 List test_qtri_nolog(NumericVector x, double a, double b, double c) {
@@ -288,7 +288,7 @@ List test_qtri_nolog(NumericVector x, double a, double b, double c) {
         _["VectorNoLogNoLower"] = qtri(x, a, b, c, false),
         _["DoubleNoLogNoLower"] = q_tri(x[0], a, b, c, 0)
     );
-}
+} // nocov
 
 // [[Rcpp::export]]
 List test_qtri_log(NumericVector x, double a, double b, double c) {
@@ -298,7 +298,7 @@ List test_qtri_log(NumericVector x, double a, double b, double c) {
         _["VectorLogNoLower"] = qtri(x, a, b, c, false, true),
         _["DoubleLogNoLower"] = q_tri(x[0], a, b, c, 0, 1)
     );
-}
+} // nocov
 
 
 
@@ -310,7 +310,7 @@ List test_dmvnorm(arma::mat x, arma::vec mu, arma::mat S) {
         _["Log"] = dmvnorm(x, mu, S, true),
         _["NoLog"] = dmvnorm(x, mu, S, false)
     );
-}
+} // nocov
 
 
 
@@ -322,7 +322,7 @@ List test_dmvt(arma::mat x, arma::vec mu, arma::mat S, double df) {
         _["Log"] = dmvt(x, mu, S, df, true),
         _["NoLog"] = dmvt(x, mu, S, df, false)
     );
-}
+} // nocov
 
 
 
@@ -334,7 +334,7 @@ List test_dwish(arma::mat x, int df, arma::mat S) {
         _["Log"] = dwish(x, df, S, true),
         _["NoLog"] = dwish(x, df, S, false)
     );
-}
+} // nocov
 
 
 
@@ -346,4 +346,4 @@ List test_diwish(arma::mat x, int df, arma::mat S) {
         _["Log"] = diwish(x, df, S, true),
         _["NoLog"] = diwish(x, df, S, false)
     );
-}
+} // nocov
