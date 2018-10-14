@@ -1,12 +1,12 @@
 #' RcppDist
 #'
-#' 'Rcpp' Integration of Additional Probability Distributions 
-#' 
+#' 'Rcpp' Integration of Additional Probability Distributions
+#'
 #' The Rcpp package provides a C++ library to make it easier to use C++ with R.
 #' R and Rcpp provide functions for a variety of statistical distributions.
 #' Several R packages make functions available to R for additional statistical distributions.
 #' However, to access these functions from C++ code, a costly call to the R functions must be made.
-#' 
+#'
 #' RcppDist provides a C++ library with functions for additional statistical distributions
 #' that can be called from C++ when writing code using Rcpp or RcppArmadillo.
 #' Functions are available that return NumericVectors as well as doubles,
@@ -24,9 +24,9 @@
 #'   \item The Wishart distribution*
 #'   \item And the inverse Wishart distribution*.
 #' }
-#' 
+#'
 #' Distributions marked with an asterisk rely also on RcppArmadillo.
-#' 
+#'
 #' @name RcppDist
 #' @docType package
 #' @author  JB Duck-Mayr

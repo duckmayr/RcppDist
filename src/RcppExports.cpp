@@ -7,6 +7,19 @@
 
 using namespace Rcpp;
 
+// bayeslm
+Rcpp::List bayeslm(const arma::vec& y, const arma::mat x, const int iters);
+RcppExport SEXP _RcppDist_bayeslm(SEXP ySEXP, SEXP xSEXP, SEXP itersSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type y(ySEXP);
+    Rcpp::traits::input_parameter< const arma::mat >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const int >::type iters(itersSEXP);
+    rcpp_result_gen = Rcpp::wrap(bayeslm(y, x, iters));
+    return rcpp_result_gen;
+END_RCPP
+}
 // test_d4beta
 List test_d4beta(NumericVector x, double shape1, double shape2, double a, double b);
 RcppExport SEXP _RcppDist_test_d4beta(SEXP xSEXP, SEXP shape1SEXP, SEXP shape2SEXP, SEXP aSEXP, SEXP bSEXP) {
@@ -414,6 +427,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_RcppDist_bayeslm", (DL_FUNC) &_RcppDist_bayeslm, 3},
     {"_RcppDist_test_d4beta", (DL_FUNC) &_RcppDist_test_d4beta, 5},
     {"_RcppDist_test_p4beta", (DL_FUNC) &_RcppDist_test_p4beta, 5},
     {"_RcppDist_test_q4beta_nolog", (DL_FUNC) &_RcppDist_test_q4beta_nolog, 5},
