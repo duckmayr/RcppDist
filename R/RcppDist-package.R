@@ -30,7 +30,7 @@
 #' Distributions marked with an asterisk rely also on RcppArmadillo.
 #'
 #' For more information on using 'RcppDist' functions, you can consult the
-#' vignette (via \code{vignette("RcppDist-introduction")}) as well as an
+#' vignette via \cr\code{vignette("RcppDist-introduction")} as well as an
 #' example of using the multivariate normal generator provided by 'RcppDist'
 #' in the function \code{\link{bayeslm}}.
 #'
