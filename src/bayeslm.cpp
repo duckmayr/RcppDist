@@ -10,6 +10,14 @@
 //' priors (such that estimates should be equivalent to classical estimates).
 //' The code to do so is as follows:
 //' \preformatted{
+//' #include <RcppDist.h>
+//' // or, alternatively,
+//' // #include <RcppArmadillo.h>
+//' // #include <mvnorm.h>
+//'
+//' // [[Rcpp::depends(RcppArmadillo, RcppDist)]]
+//'
+//' // [[Rcpp::export]]
 //' Rcpp::List bayeslm(const arma::vec& y, const arma::mat x,
 //'                    const int iters = 1000) {
 //'     int n = x.n_rows;

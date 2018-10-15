@@ -2,15 +2,17 @@
 #'
 #' 'Rcpp' Integration of Additional Probability Distributions
 #'
-#' The Rcpp package provides a C++ library to make it easier to use C++ with R.
-#' R and Rcpp provide functions for a variety of statistical distributions.
-#' Several R packages make functions available to R for additional statistical distributions.
-#' However, to access these functions from C++ code, a costly call to the R functions must be made.
+#' The 'Rcpp' package provides a C++ library to make it easier to use C++ with
+#' R. R and 'Rcpp' provide functions for a variety of statistical
+#' distributions. Several R packages make functions available to R for
+#' additional statistical distributions. However, to access these functions
+#' from C++ code, a costly call to the R functions must be made.
 #'
-#' RcppDist provides a C++ library with functions for additional statistical distributions
-#' that can be called from C++ when writing code using Rcpp or RcppArmadillo.
-#' Functions are available that return NumericVectors as well as doubles,
-#' and for multivariate or matrix distributions, Armadillo vectors and matrices.
+#' 'RcppDist' provides a header-only C++ library with functions for additional
+#' statistical distributions that can be called from C++ when writing code
+#' using 'Rcpp' or 'RcppArmadillo'. Functions are available that return a
+#' 'NumericVector' as well as doubles, and for multivariate or matrix
+#' distributions, 'Armadillo' vectors and matrices.
 #' RcppDist provides functions for the following distributions:
 #' \itemize{
 #'   \item The four parameter beta distribution
@@ -26,6 +28,11 @@
 #' }
 #'
 #' Distributions marked with an asterisk rely also on RcppArmadillo.
+#'
+#' For more information on using 'RcppDist' functions, you can consult the
+#' vignette (via \code{vignette("RcppDist-introduction")}) as well as an
+#' example of using the multivariate normal generator provided by 'RcppDist'
+#' in the function \code{\link{bayeslm}}.
 #'
 #' @name RcppDist
 #' @docType package
