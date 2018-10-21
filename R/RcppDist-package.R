@@ -29,10 +29,14 @@
 #'
 #' Distributions marked with an asterisk rely also on RcppArmadillo.
 #'
-#' For more information on using 'RcppDist' functions, you can consult the
-#' vignette via \cr\code{vignette("RcppDist-introduction")} as well as an
-#' example of using the multivariate normal generator provided by 'RcppDist'
-#' in the function \code{\link{bayeslm}}.
+#' For more information on using 'RcppDist' functions in your C++ code, please
+#' consult the vignette via \code{vignette("RcppDist")}; the vignette explains
+#' how to link to the package and include the headers, which header files
+#' provide which functions, and also provides all function declarations
+#' (so that you can see the function and argument names and return/argument
+#' types; the arguments are also described in reasonable detail). You can also
+#' see an example of using the multivariate normal generator provided by
+#' 'RcppDist' in the function \code{\link{bayeslm}}.
 #'
 #' @name RcppDist
 #' @docType package

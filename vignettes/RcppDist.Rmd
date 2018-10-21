@@ -92,7 +92,7 @@ To use RcppDist in a package that does not link to RcppArmadillo, you must
 
 To use RcppDist in a package that links to RcppArmadillo, you must
 
-- Set up your package to `RcppArmadillo`, such as via  
+- Set up your package to use `RcppArmadillo`, such as via  
 `RcppArmadillo::RcppArmadillo.package.skeleton(your_package)`\footnote{See the RcppArmadillo manual or help files for more details, in particular the `RcppArmadillo-package' and `RcppArmadillo.package.skeleton' entries.}
 - Add RcppDist to the LinkingTo field of your DESCRIPTION file.
 - In any C++ file that calls a `RcppDist` function, add `#include <RcppDist.h>` (or a more specific header from the package such as `mvt.h` and `RcppArmadillo.h`)
@@ -136,7 +136,7 @@ at the top of your file. If you want to pull in just one or more of the distribu
 
 # RcppDist Functions
 
-Much like distributions in R, functions are prefixed by d, p, q, and r to mean density, distribution, quantile, and random number generating functions respectively. Functions that are return double rather than, say, a NumericVector are instead prefixed by d_, p_, q_, and r_. Below are more detailed descriptions of the functions provided by each header.
+Much like distributions in R, functions are prefixed by d, p, q, and r to mean density, distribution, quantile, and random number generating functions respectively. Functions that return a double rather than, say, a NumericVector are instead prefixed by d_, p_, q_, and r_. Below are more detailed descriptions of the functions provided by each header.
 
 ## 4beta.h (Four Parameter Beta Distribution)
 
@@ -448,7 +448,7 @@ Where
 
 ## wishart.h (Wishart and Inverse Wishart Distributions)
 
-The Wishart distribution is a generalization of the gamma distribution to multiple dimensions defined over symmetric, nonnegative-definite random matrices. Its parameters are the degrees of freedom and a scale matrix $S$. If $X \sim$ Wishart(df, $S$), then $X^{-1} \sim$ Inverse Wishart(df, $S^{-1}$). Due to their use in the density functions for these distributions, a multivariate gamma function and logged multivariate gamma function are also provided. Note that for now, al functions for this distribution are designed to deal with only one random matrix. The functions provided in this header are:
+The Wishart distribution is a generalization of the gamma distribution to multiple dimensions defined over symmetric, nonnegative-definite random matrices. Its parameters are the degrees of freedom and a scale matrix $S$. If $X \sim$ Wishart(df, $S$), then $X^{-1} \sim$ Inverse Wishart(df, $S^{-1}$). Due to their use in the density functions for these distributions, a multivariate gamma function and logged multivariate gamma function are also provided. Note that for now, all functions for this distribution are designed to deal with only one random matrix. The functions provided in this header are:
 
 ```{Rcpp wishart, eval = FALSE}
 double mvgamma(const int p, const double x)
