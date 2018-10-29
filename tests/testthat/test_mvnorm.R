@@ -7,7 +7,9 @@ test_that('The density function provides correct answers', {
     expect_equal(test_dmvnorm(x, mu, S),
                  list(
                     "Log" = matrix(-12.4495440069013, ncol = 1),
-                    "NoLog" = matrix(0.0000039195096, ncol = 1)
+                    "NoLog" = matrix(0.0000039195096, ncol = 1),
+                    "LogRowVec" = matrix(-12.4495440069013, ncol = 1),
+                    "NoLogRowVec" = matrix(0.0000039195096, ncol = 1)
                     )
                 )
     x <- matrix(c(0.5, -0.5, 0.5), nrow = 1)
@@ -16,7 +18,9 @@ test_that('The density function provides correct answers', {
     expect_equal(test_dmvnorm(x, mu, S),
                  list(
                     "Log" = matrix(-28.92001771250195, ncol = 1),
-                    "NoLog" = matrix(0.00000000000027, ncol = 1)
+                    "NoLog" = matrix(0.00000000000027, ncol = 1),
+                    "LogRowVec" = matrix(-28.92001771250195, ncol = 1),
+                    "NoLogRowVec" = matrix(0.00000000000027, ncol = 1)
                     )
                 )
 })

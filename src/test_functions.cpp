@@ -306,9 +306,12 @@ List test_qtri_log(NumericVector x, double a, double b, double c) {
 
 // [[Rcpp::export]]
 List test_dmvnorm(arma::mat x, arma::vec mu, arma::mat S) {
+    arma::rowvec Mu = mu.t();
     return List::create(
         _["Log"] = dmvnorm(x, mu, S, true),
-        _["NoLog"] = dmvnorm(x, mu, S, false)
+        _["NoLog"] = dmvnorm(x, mu, S, false),
+        _["LogRowVec"] = dmvnorm(x, Mu, S, true),
+        _["NoLogRowVec"] = dmvnorm(x, Mu, S, false)
     );
 } // nocov
 
@@ -318,9 +321,12 @@ List test_dmvnorm(arma::mat x, arma::vec mu, arma::mat S) {
 
 // [[Rcpp::export]]
 List test_dmvt(arma::mat x, arma::vec mu, arma::mat S, double df) {
+    arma::rowvec Mu = mu.t();
     return List::create(
         _["Log"] = dmvt(x, mu, S, df, true),
-        _["NoLog"] = dmvt(x, mu, S, df, false)
+        _["NoLog"] = dmvt(x, mu, S, df, false),
+        _["LogRowVec"] = dmvt(x, Mu, S, df, true),
+        _["NoLogRowVec"] = dmvt(x, Mu, S, df, false)
     );
 } // nocov
 
