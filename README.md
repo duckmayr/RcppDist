@@ -23,15 +23,15 @@ RcppDist provides functions for the following distributions:
  - The inverse Wishart distribution
  
 ## Installation
- 
+
 You can install RcppDist from CRAN via
 
     install.packages("RcppDist")
-    
+
 Or, you can install the development version from GitHub via
 
     devtools::install_github("duckmayr/RcppDist")
-     
+
 ## Using RcppDist
 
 ### Including RcppDist headers in standalone files
@@ -40,13 +40,13 @@ You can use RcppDist in standalone C++ files using
 
     #include <RcppDist.h>
     // [[Rcpp::depends(RcppArmadillo, RcppDist)]]
-    
+
 If you would prefer to use Rcpp but *not* RcppArmadillo (i.e. include the Rcpp headers but not the RcppArmadillo headers), instead use
 
     #define RCPPDIST_DONT_USE_ARMA
     #include <RcppDist.h>
     // [[Rcpp::depends(RcppDist)]]
-    
+
 though be aware that without Armadillo, the multivariate normal, multivariate t, Wishart, and inverse Wishart distributions will be unavailable.
 
 ### Including RcppDist headers in a package
@@ -63,7 +63,7 @@ To use RcppDist in a package that does not link to RcppArmadillo, you must
  - Add RcppDist to the LinkingTo field of your DESCRIPTION file.
  - In any C++ file that calls a `RcppDist` function, add `#include <RcppDist.h>`.
  - Use `#define RCPPDIST_DONT_USE_ARMA` before any include of `RcppDist.h`.
- 
+
 ### RcppDist functions
 
 Much like distributions in R, functions are prefixed by d, p, q, and r to mean density, distribution, quantile, and random number generating functions respectively. Functions that return a double rather than, say, a NumericVector are instead prefixed by d_, p_, q_, and r_. For example,
@@ -79,11 +79,11 @@ gives the density of the four-parameter beta distribution with shape values 2 an
 Definitions and descriptions of the C++ functions provided by RcppDist, as well as more information on including RcppDist headers (such as using headers for only one or more specific distributions), are given in the vignette, which you can access from R using
 
     vignette("RcppDist")
-    
+
 An example of using RcppDist's multivariate normal generator can be seen in the `bayeslm()` R-facing function; its code is displayed in the help file for it, accessible via
 
     help("bayeslm")
-    
+
 ## Contributing and requests
 
 The distributions above were selected for inclusion because I already had occasion to generate C++ code for use with Rcpp (or RcppArmadillo) for these distributions, but I am open to requests to expand the package to include additional distributions -- just open an issue with the requested feature, or feel free to contribute the code yourself and open a pull request.

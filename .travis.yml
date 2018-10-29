@@ -4,15 +4,17 @@ language: R
 sudo: false
 cache: packages
 
-os:
-  - linux
-  - osx
-
 r:
   - release
   - oldrel
   - devel
   
+matrix:
+    include:
+        - os: linux
+        - os: osx
+          fortran: false
+          
 addons:
   apt:
     packages:
