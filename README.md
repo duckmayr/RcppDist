@@ -1,6 +1,5 @@
 # RcppDist
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/RcppDist)](https://cran.r-project.org/package=RcppDist)
 [![Travis-CI Build Status](https://travis-ci.org/duckmayr/RcppDist.svg?branch=master)](https://travis-ci.org/duckmayr/RcppDist)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/duckmayr/RcppDist?branch=master&svg=true)](https://ci.appveyor.com/project/duckmayr/RcppDist)
 [![Coverage Status](https://codecov.io/github/duckmayr/RcppDist/graph/badge.svg)](https://codecov.io/github/duckmayr/RcppDist)
@@ -28,11 +27,15 @@ RcppDist provides functions for the following distributions:
 
 You can install RcppDist from CRAN via
 
-    install.packages("RcppDist")
+```r
+install.packages("RcppDist")
+```
 
 Or, you can install the development version from GitHub via
 
-    devtools::install_github("duckmayr/RcppDist")
+```r
+devtools::install_github("duckmayr/RcppDist")
+```
 
 ## Using RcppDist
 
@@ -40,14 +43,18 @@ Or, you can install the development version from GitHub via
 
 You can use RcppDist in standalone C++ files using
 
-    #include <RcppDist.h>
-    // [[Rcpp::depends(RcppArmadillo, RcppDist)]]
+```cpp
+#include <RcppDist.h>
+// [[Rcpp::depends(RcppArmadillo, RcppDist)]]
+```
 
 If you would prefer to use Rcpp but *not* RcppArmadillo (i.e. include the Rcpp headers but not the RcppArmadillo headers), instead use
 
-    #define RCPPDIST_DONT_USE_ARMA
-    #include <RcppDist.h>
-    // [[Rcpp::depends(RcppDist)]]
+```cpp
+#define RCPPDIST_DONT_USE_ARMA
+#include <RcppDist.h>
+// [[Rcpp::depends(RcppDist)]]
+```
 
 though be aware that without Armadillo, the multivariate normal, multivariate t, Wishart, and inverse Wishart distributions will be unavailable.
 
@@ -70,21 +77,29 @@ To use RcppDist in a package that does not link to RcppArmadillo, you must
 
 Much like distributions in R, functions are prefixed by d, p, q, and r to mean density, distribution, quantile, and random number generating functions respectively. Functions that return a double rather than, say, a NumericVector are instead prefixed by d_, p_, q_, and r_. For example,
 
-    d4beta(x, 2.0, 2.0, -5.0, 5.0)
+```cpp
+d4beta(x, 2.0, 2.0, -5.0, 5.0)
+```
 
 gives the density of the four-parameter beta distribution with shape values 2 and 2 defined on the interval [-5, 5] at the values in the `Rcpp::NumericVector` x (the function's return value is also a `Rcpp::NumericVector`), while
 
-    d_4beta(x, 2.0, 2.0, -5.0, 5.0)
+```
+d_4beta(x, 2.0, 2.0, -5.0, 5.0)
+```
 
 gives the density of the four-parameter beta distribution with shape values 2 and 2 defined on the interval [-5, 5] at the value in the `double` x (the function's return value is also a `double`).
 
 Definitions and descriptions of the C++ functions provided by RcppDist, as well as more information on including RcppDist headers (such as using headers for only one or more specific distributions), are given in the vignette, which you can access from R using
 
-    vignette("RcppDist")
+```r
+vignette("RcppDist")
+```
 
 An example of using RcppDist's multivariate normal generator can be seen in the `bayeslm()` R-facing function; its code is displayed in the help file for it, accessible via
 
-    help("bayeslm")
+```r
+help("bayeslm")
+```
 
 ## Contributing and requests
 

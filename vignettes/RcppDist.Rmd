@@ -412,10 +412,16 @@ The multivariate normal distribution is a generalization of the normal distribut
 
 ```{Rcpp mvnorm, eval = FALSE}
 arma::vec dmvnorm(const arma::mat& x, const arma::vec& mu,
-        const arma::mat& S, const bool log_p = false) 
+        const arma::mat& S, const bool log_p = false)
+        
+arma::vec dmvnorm(const arma::mat& x, const arma::rowvec& mu,
+        const arma::mat& S, const bool log_p = false)
 
 arma::mat rmvnorm(const arma::uword n, const arma::vec& mu,
-        const arma::mat& S) 
+        const arma::mat& S)
+        
+arma::mat rmvnorm(const arma::uword n, const arma::rowvec& mu,
+        const arma::mat& S)
 ```
     
 Where
@@ -425,6 +431,8 @@ Where
   - `mu` is the mean vector
   - `S` is the covariance matrix
   - `log_p` is a `bool` (the default is `false`); if `true`, the probabilities are given as $\log(p)$
+  
+Notice that the functions are overloaded such that you can pass `mu` either as an `arma::vec` or as an `arma::rowvec`.
 
 ## mvt.h (Multivariate t Distribution)
 
@@ -432,9 +440,15 @@ The multivariate t distribution is a generalization of the t distribution to mul
 
 ```{Rcpp mvt, eval = FALSE}
 arma::vec dmvt(const arma::mat& x, const arma::vec& mu,
-        const arma::mat& S, const double df, const bool log_p = false) 
+        const arma::mat& S, const double df, const bool log_p = false)
+        
+arma::vec dmvt(const arma::mat& x, const arma::rowvec& mu,
+        const arma::mat& S, const double df, const bool log_p = false)
 
 arma::mat rmvt(const arma::uword n, const arma::vec& mu,
+        const arma::mat& S, const double df)
+
+arma::mat rmvt(const arma::uword n, const arma::rowvec& mu,
         const arma::mat& S, const double df)
 ```
     
@@ -445,6 +459,8 @@ Where
   - `mu` is the location vector
   - `S` is the correlation matrix
   - `log_p` is a `bool` (the default is `false`); if `true`, the probabilities are given as $\log(p)$
+  
+Notice that the functions are overloaded such that you can pass `mu` either as an `arma::vec` or as an `arma::rowvec`.
 
 ## wishart.h (Wishart and Inverse Wishart Distributions)
 
