@@ -18,24 +18,25 @@
 #' // [[Rcpp::depends(RcppArmadillo, RcppDist)]]
 #'
 #' // [[Rcpp::export]]
-#' Rcpp::List bayeslm(const arma::vec& y, const arma::mat x,
+#' Rcpp::List bayeslm(const arma::vec& y, const arma::mat& x,
 #'                    const int iters = 1000) {
 #'     int n = x.n_rows;
 #'     int p = x.n_cols;
-#'     double a = (n - p) / 2.0;
-#'     arma::mat xtx = x.t() * x;
-#'     arma::mat xtxinv = xtx.i();
-#'     arma::vec mu = xtxinv * x.t() * y;
-#'     arma::mat px = x * xtxinv * x.t();
-#'     double ssq = arma::as_scalar(y.t() * (arma::eye(n, n) - px) * y);
+#'     double a = (n - p) / 2.0; // Shape for sigma^2's gamma distribution
+#'     arma::mat xtx = x.t() * x; // X'X
+#'     arma::mat xtxinv = xtx.i();  // (X'X)^-1
+#'     arma::vec mu = xtxinv * x.t() * y; // Mean of beta draws
+#'     arma::mat px = x * xtxinv * x.t(); // Projector matrix of X
+#'     double ssq = arma::as_scalar(y.t() * (arma::eye(n, n) - px) * y); // s^2
 #'     ssq *= (1.0 / (n - p));
-#'     double b = 1.0 / (a * ssq);
-#'     arma::mat beta_draws(iters, p);
-#'     Rcpp::NumericVector sigma_draws(iters);
+#'     double b = 1.0 / (a * ssq); // Scale for sigma^2's gamma distribution
+#'     arma::mat beta_draws(iters, p); // Object to store beta draws in
+#'     Rcpp::NumericVector sigma_draws(iters); // Object to store sigma^2 draws
 #'     for ( int iter = 0; iter < iters; ++iter ) {
-#'         double sigmasq = 1.0 / R::rgamma(a, b);
+#'         double sigmasq = 1.0 / R::rgamma(a, b); // Draw a sigma^2 value
 #'         sigma_draws[iter] = sigmasq;
-#'         // Here we can use our multivariate normal generator
+#'         // Here we can just use RcppDist's multivariate normal generator
+#'         // to draw a beta value given our last sigma^2 draw
 #'         beta_draws.row(iter) = rmvnorm(1, mu, xtxinv * sigmasq);
 #'     }
 #'     return Rcpp::List::create(Rcpp::_["beta_draws"] = beta_draws,

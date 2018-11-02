@@ -8,13 +8,13 @@
 using namespace Rcpp;
 
 // bayeslm
-Rcpp::List bayeslm(const arma::vec& y, const arma::mat x, const int iters);
+Rcpp::List bayeslm(const arma::vec& y, const arma::mat& x, const int iters);
 RcppExport SEXP _RcppDist_bayeslm(SEXP ySEXP, SEXP xSEXP, SEXP itersSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const arma::vec& >::type y(ySEXP);
-    Rcpp::traits::input_parameter< const arma::mat >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
     Rcpp::traits::input_parameter< const int >::type iters(itersSEXP);
     rcpp_result_gen = Rcpp::wrap(bayeslm(y, x, iters));
     return rcpp_result_gen;
