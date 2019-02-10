@@ -4,7 +4,7 @@
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/duckmayr/RcppDist?branch=master&svg=true)](https://ci.appveyor.com/project/duckmayr/RcppDist)
 [![Coverage Status](https://codecov.io/github/duckmayr/RcppDist/graph/badge.svg)](https://codecov.io/github/duckmayr/RcppDist)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/RcppDist)](https://cran.r-project.org/package=RcppDist)
-[![CRAN_Downloads_Badge](https://cranlogs.r-pkg.org/badges/last-week/RcppDist)](https://cranlogs.r-pkg.org/badges/last-month/RcppDist)
+[![CRAN_Downloads_Badge](https://cranlogs.r-pkg.org/badges/last-month/RcppDist)](https://cranlogs.r-pkg.org/badges/last-month/RcppDist)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
 The [Rcpp package](https://github.com/RcppCore/Rcpp) provides a C++ library to make it easier to use C++ with R. R and Rcpp provide functions for a variety of statistical distributions. Several R packages make functions available to R for additional statistical distributions. However, to access these functions from C++ code, a costly call to the R functions must be made.
