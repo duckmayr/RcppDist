@@ -31,16 +31,16 @@
 #'     ssq *= (1.0 / (n - p));
 #'     double b = 1.0 / (a * ssq); // Scale for sigma^2's gamma distribution
 #'     arma::mat beta_draws(iters, p); // Object to store beta draws in
-#'     Rcpp::NumericVector sigma_draws(iters); // Object to store sigma^2 draws
+#'     Rcpp::NumericVector sigmasq_draws(iters); // Stores sigma^2 draws
 #'     for ( int iter = 0; iter < iters; ++iter ) {
 #'         double sigmasq = 1.0 / R::rgamma(a, b); // Draw a sigma^2 value
-#'         sigma_draws[iter] = sigmasq;
+#'         sigmasq_draws[iter] = sigmasq;
 #'         // Here we can just use RcppDist's multivariate normal generator
 #'         // to draw a beta value given our last sigma^2 draw
 #'         beta_draws.row(iter) = rmvnorm(1, mu, xtxinv * sigmasq);
 #'     }
 #'     return Rcpp::List::create(Rcpp::_["beta_draws"] = beta_draws,
-#'                               Rcpp::_["sigma_draws"] = sigma_draws);
+#'                               Rcpp::_["sigmasq_draws"] = sigmasq_draws);
 #' }
 #' }
 #'
@@ -51,18 +51,28 @@
 #'   desired; the default is 1000.
 #'
 #' @return A list of length two; the first element is a numeric matrix of the
-#'   beta draws and the second element is a numeric vector of the sigma draws
+#'   beta draws and the second element is a numeric vector of the sigma
+#'   squared draws
 #' @examples
+#' # Simulate data
 #' set.seed(123)
 #' n <- 30
 #' x <- cbind(1, matrix(rnorm(n*3), ncol = 3))
-#' beta <- matrix(c(10, 2, -1, 3), nrow = 4)
-#' y <- x %*% beta + rnorm(n)
+#' beta <- matrix(c(10, -2, -1, 3), nrow = 4)
+#' sigma <- 1.5
+#' y <- x %*% beta + rnorm(n, mean = 0, sd = sigma)
+#' # Run the models
 #' freqmod <- lm(y ~ x[ , -1])
 #' bayesmod <- bayeslm(y, x)
-#' round(unname(coef(freqmod)), 2)
-#' round(apply(bayesmod$beta_draws, 2, mean), 2)
-#' c(beta)
+#' # Check the estimates
+#' estimates <- data.frame(
+#'     truth    = c(beta, sigma^2),
+#'     freqmod  = c(coef(freqmod), sigma(freqmod)^2),
+#'     bayesmod = c(apply(bayesmod$beta_draws, 2, mean),
+#'                  mean(bayesmod$sigmasq_draws))
+#' )
+#' rownames(estimates) <- c("beta_0", "beta_1", "beta_2", "beta_3", "sigmasq")
+#' print(estimates, digits = 2)
 #' @export
 bayeslm <- function(y, x, iters = 1000L) {
     .Call('_RcppDist_bayeslm', PACKAGE = 'RcppDist', y, x, iters)
