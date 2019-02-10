@@ -254,7 +254,7 @@ List test_qtrunclst_log(NumericVector x, double df, double mu, double sigma,
 
 
 
-// FOUR PARAMETER BETA DISTRIBUTION
+// TRIANGLE DISTRIBUTION
 
 // [[Rcpp::export]]
 List test_dtri(NumericVector x, double a, double b, double c) {
@@ -297,6 +297,96 @@ List test_qtri_log(NumericVector x, double a, double b, double c) {
         _["DoubleLog"] = q_tri(x[0], a, b, c, 1, 1),
         _["VectorLogNoLower"] = qtri(x, a, b, c, false, true),
         _["DoubleLogNoLower"] = q_tri(x[0], a, b, c, 0, 1)
+    );
+} // nocov
+
+
+
+// LAPLACE DISTRIBUTION
+
+// [[Rcpp::export]]
+List test_dlaplace(NumericVector x, double mu, double b) {
+    int n = x.size();
+    NumericVector VectorLog   = dlaplace(x, mu, b, true);
+    NumericVector VectorNoLog = dlaplace(x, mu, b, false);
+    NumericVector DoubleLog(n);
+    NumericVector DoubleNoLog(n);
+    for ( int i = 0; i < n; ++i ) {
+        DoubleLog[i]   = d_laplace(x[i], mu, b, 1);
+        DoubleNoLog[i] = d_laplace(x[i], mu, b, 0);
+    }
+    return List::create(
+        _["VectorLog"]   = VectorLog,
+        _["VectorNoLog"] = VectorNoLog,
+        _["DoubleLog"]   = DoubleLog,
+        _["DoubleNoLog"] = DoubleNoLog
+    );
+} // nocov
+
+// [[Rcpp::export]]
+List test_plaplace(NumericVector x, double mu, double b) {
+    int n = x.size();
+    NumericVector VectorLog          = plaplace(x, mu, b, true, true);
+    NumericVector VectorNoLog        = plaplace(x, mu, b, true, false);
+    NumericVector VectorLogNoLower   = plaplace(x, mu, b, false, true);
+    NumericVector VectorNoLogNoLower = plaplace(x, mu, b, false, false);
+    NumericVector DoubleLog(n);
+    NumericVector DoubleNoLog(n);
+    NumericVector DoubleLogNoLower(n);
+    NumericVector DoubleNoLogNoLower(n);
+    for ( int i = 0; i < n; ++i ) {
+        DoubleLog[i]          = p_laplace(x[i], mu, b, 1, 1);
+        DoubleNoLog[i]        = p_laplace(x[i], mu, b, 1, 0);
+        DoubleLogNoLower[i]   = p_laplace(x[i], mu, b, 0, 1);
+        DoubleNoLogNoLower[i] = p_laplace(x[i], mu, b, 0, 0);
+    }
+    return List::create(
+        _["VectorLog"]          = VectorLog,
+        _["VectorNoLog"]        = VectorNoLog,
+        _["DoubleLog"]          = DoubleLog,
+        _["DoubleNoLog"]        = DoubleNoLog,
+        _["VectorLogNoLower"]   = VectorLogNoLower,
+        _["VectorNoLogNoLower"] = VectorNoLogNoLower,
+        _["DoubleLogNoLower"]   = DoubleLogNoLower,
+        _["DoubleNoLogNoLower"] = DoubleNoLogNoLower
+    );
+} // nocov
+
+// [[Rcpp::export]]
+List test_qlaplace_nolog(NumericVector x, double mu, double b) {
+    int n = x.size();
+    NumericVector VectorNoLog        = qlaplace(x, mu, b, true, false);
+    NumericVector VectorNoLogNoLower = qlaplace(x, mu, b, false, false);
+    NumericVector DoubleNoLog(n);
+    NumericVector DoubleNoLogNoLower(n);
+    for ( int i = 0; i < n; ++i ) {
+        DoubleNoLog[i]        = q_laplace(x[i], mu, b, 1, 0);
+        DoubleNoLogNoLower[i] = q_laplace(x[i], mu, b, 0, 0);
+    }
+    return List::create(
+        _["VectorNoLog"]        = VectorNoLog,
+        _["DoubleNoLog"]        = DoubleNoLog,
+        _["VectorNoLogNoLower"] = VectorNoLogNoLower,
+        _["DoubleNoLogNoLower"] = DoubleNoLogNoLower
+    );
+} // nocov
+
+// [[Rcpp::export]]
+List test_qlaplace_log(NumericVector x, double mu, double b) {
+    int n = x.size();
+    NumericVector VectorLog        = qlaplace(x, mu, b, true, true);
+    NumericVector VectorLogNoLower = qlaplace(x, mu, b, false, true);
+    NumericVector DoubleLog(n);
+    NumericVector DoubleLogNoLower(n);
+    for ( int i = 0; i < n; ++i ) {
+        DoubleLog[i]        = q_laplace(x[i], mu, b, 1, 1);
+        DoubleLogNoLower[i] = q_laplace(x[i], mu, b, 0, 1);
+    }
+    return List::create(
+        _["VectorLog"]        = VectorLog,
+        _["DoubleLog"]        = DoubleLog,
+        _["VectorLogNoLower"] = VectorLogNoLower,
+        _["DoubleLogNoLower"] = DoubleLogNoLower
     );
 } // nocov
 
