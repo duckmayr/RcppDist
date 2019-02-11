@@ -33,12 +33,12 @@ inline double d_laplace(const double x, const double mu, const double b,
     return 0.5 * b_reciprocal * std::exp(-scaled_abs_difference);
 }
 
-inline double p_laplace(const double x, const double mu, const double b,
+inline double p_laplace(const double q, const double mu, const double b,
                         const int lower_tail = 1, const int log_p = 0) {
-    double P = (x - mu) / b;
+    double P = (q - mu) / b;
     if ( log_p ) {
         if ( lower_tail ) {
-            if ( x < mu ) {
+            if ( q < mu ) {
                 P -= M_LN2;
             }
             else {
@@ -46,7 +46,7 @@ inline double p_laplace(const double x, const double mu, const double b,
             }
         }
         else {
-            if ( x < mu ) {
+            if ( q < mu ) {
                 P = std::log(1.0 - 0.5 * std::exp(P));
             }
             else {
@@ -56,7 +56,7 @@ inline double p_laplace(const double x, const double mu, const double b,
     }
     else {
         if ( lower_tail ) {
-            if ( x < mu ) {
+            if ( q < mu ) {
                 P = 0.5 * std::exp(P);
             }
             else {
@@ -64,7 +64,7 @@ inline double p_laplace(const double x, const double mu, const double b,
             }
         }
         else {
-            if ( x < mu ) {
+            if ( q < mu ) {
                 P = 1.0 - 0.5 * std::exp(P);
             }
             else {
@@ -106,24 +106,24 @@ inline Rcpp::NumericVector dlaplace(const Rcpp::NumericVector& x,
     return 0.5 * b_reciprocal * Rcpp::exp(-scaled_abs_difference);
 }
 
-inline Rcpp::NumericVector plaplace(const Rcpp::NumericVector& x,
+inline Rcpp::NumericVector plaplace(const Rcpp::NumericVector& q,
         const double mu, const double b, const bool lower_tail = true,
         const bool log_p = false) {
-    int n = x.size();
+    int n = q.size();
     Rcpp::NumericVector result(n);
     for ( int i = 0; i < n; ++i ) {
-        result[i] = p_laplace(x[i], mu, b, lower_tail, log_p);
+        result[i] = p_laplace(q[i], mu, b, lower_tail, log_p);
     }
     return result;
 }
 
-inline Rcpp::NumericVector qlaplace(const Rcpp::NumericVector& x,
+inline Rcpp::NumericVector qlaplace(const Rcpp::NumericVector& p,
         const double mu, const double b, const bool lower_tail = true,
         const bool log_p = false) {
-    int n = x.size();
+    int n = p.size();
     Rcpp::NumericVector result(n);
     for ( int i = 0; i < n; ++i ) {
-        result[i] = q_laplace(x[i], mu, b, lower_tail, log_p);
+        result[i] = q_laplace(p[i], mu, b, lower_tail, log_p);
     }
     return result;
 }

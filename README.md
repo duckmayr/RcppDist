@@ -13,6 +13,7 @@ The [Rcpp package](https://github.com/RcppCore/Rcpp) provides a C++ library to m
 
 RcppDist provides functions for the following distributions:
  - The four parameter beta distribution
+ - The Laplace distribution
  - The location-scale t distribution
  - The truncated normal distribution
  - The truncated t distribution
