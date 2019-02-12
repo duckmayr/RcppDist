@@ -372,6 +372,58 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// test_dlaplace
+List test_dlaplace(NumericVector x, double mu, double b);
+RcppExport SEXP _RcppDist_test_dlaplace(SEXP xSEXP, SEXP muSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_dlaplace(x, mu, b));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_plaplace
+List test_plaplace(NumericVector x, double mu, double b);
+RcppExport SEXP _RcppDist_test_plaplace(SEXP xSEXP, SEXP muSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_plaplace(x, mu, b));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_qlaplace_nolog
+List test_qlaplace_nolog(NumericVector x, double mu, double b);
+RcppExport SEXP _RcppDist_test_qlaplace_nolog(SEXP xSEXP, SEXP muSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_qlaplace_nolog(x, mu, b));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_qlaplace_log
+List test_qlaplace_log(NumericVector x, double mu, double b);
+RcppExport SEXP _RcppDist_test_qlaplace_log(SEXP xSEXP, SEXP muSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_qlaplace_log(x, mu, b));
+    return rcpp_result_gen;
+END_RCPP
+}
 // test_dmvnorm
 List test_dmvnorm(arma::mat x, arma::vec mu, arma::mat S);
 RcppExport SEXP _RcppDist_test_dmvnorm(SEXP xSEXP, SEXP muSEXP, SEXP SSEXP) {
@@ -452,6 +504,10 @@ static const R_CallMethodDef CallEntries[] = {
     {"_RcppDist_test_ptri", (DL_FUNC) &_RcppDist_test_ptri, 4},
     {"_RcppDist_test_qtri_nolog", (DL_FUNC) &_RcppDist_test_qtri_nolog, 4},
     {"_RcppDist_test_qtri_log", (DL_FUNC) &_RcppDist_test_qtri_log, 4},
+    {"_RcppDist_test_dlaplace", (DL_FUNC) &_RcppDist_test_dlaplace, 3},
+    {"_RcppDist_test_plaplace", (DL_FUNC) &_RcppDist_test_plaplace, 3},
+    {"_RcppDist_test_qlaplace_nolog", (DL_FUNC) &_RcppDist_test_qlaplace_nolog, 3},
+    {"_RcppDist_test_qlaplace_log", (DL_FUNC) &_RcppDist_test_qlaplace_log, 3},
     {"_RcppDist_test_dmvnorm", (DL_FUNC) &_RcppDist_test_dmvnorm, 3},
     {"_RcppDist_test_dmvt", (DL_FUNC) &_RcppDist_test_dmvt, 4},
     {"_RcppDist_test_dwish", (DL_FUNC) &_RcppDist_test_dwish, 3},

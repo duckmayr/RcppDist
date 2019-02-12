@@ -17,12 +17,12 @@ Description: The 'Rcpp' package provides a C++ library to make it easier
     Functions are available that return a 'NumericVector' as well as
     doubles, and for multivariate or matrix distributions, 'Armadillo'
     vectors and matrices. 'RcppDist' provides functions for the following
-    distributions: the four parameter beta distribution; the location-
-    scale t distribution; the truncated normal distribution; the
-    truncated t distribution; a truncated location-scale t distribution;
-    the triangle distribution; the multivariate normal distribution*;
-    the multivariate t distribution*; the Wishart distribution*; and
-    the inverse Wishart distribution*. Distributions marked with an
+    distributions: the four parameter beta distribution; the Laplace
+    distribution; the location-scale t distribution; the truncated normal
+    distribution; the truncated t distribution; a truncated location-scale t
+    distribution; the triangle distribution; the multivariate normal
+    distribution*; the multivariate t distribution*; the Wishart distribution*;
+    and the inverse Wishart distribution*. Distributions marked with an
     asterisk rely on 'RcppArmadillo'.
 License: GPL (>= 2.0)
 URL: https://github.com/duckmayr/RcppDist

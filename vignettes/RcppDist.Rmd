@@ -23,6 +23,7 @@ RcppDist provides a C++ header-only library with functions for additional statis
 RcppDist provides functions for the following distributions:
 
   - the four parameter beta distribution
+  - the Laplace distribution
   - the location-scale t distribution
   - the truncated normal distribution
   - the truncated t distribution
@@ -59,6 +60,7 @@ However, you'll then be responsible for pulling in Rcpp/RcppArmadillo headers as
 |:----------------------------|:--------------|
 | Four Parameter Beta         | 4beta.h       |
 | Location-Scale t            | lst.h         |
+| Laplace                     | laplace.h     |
 | Truncated Normal            | truncnorm.h   |
 | Truncated t                 | trunct.h      |
 | Truncated Location-Scale t  | trunclst.h    |
@@ -182,6 +184,45 @@ Where
   - `n` is the numer of observations to draw
   - `shape1` and `shape2` are the positive shape parameters of the Beta distribution
   - `a` and `b` are the minimum and maximum values of the distribution respectively
+  - `log_p` is a `bool` or `int` (the default is `false`/0); if `true` (or > 0), the probabilities are given as $\log(p)$
+  - `lower_tail` is a `bool` or `int`; if `true` (or > 0), the probabilities are $P[X \leq x]$, otherwise, $P[X > x]$.
+
+## laplace.h (Laplace Distribution)
+
+The Laplace distribution is the distribution of differences between two independent exponential variates with identical distributions with scale $b$, shifted by the location parameter $\mu$. The functions provided in this header are:
+
+```{Rcpp laplace, eval = FALSE}
+double d_laplace(const double x, const double mu, const double b,
+        const int log_p = 0)
+
+double p_laplace(const double q, const double mu, const double b,
+        const int lower_tail = 1, const int log_p = 0)
+
+double q_laplace(const double p, const double mu, const double b,
+        const int lower_tail = 1, const int log_p = 0)
+
+double r_laplace(const double mu, const double b)
+
+Rcpp::NumericVector dlaplace(const Rcpp::NumericVector& x, const double mu,
+        const double b, const bool log_p = false)
+
+Rcpp::NumericVector plaplace(const Rcpp::NumericVector& q, const double mu,
+        const double b, const bool lower_tail = true, const bool log_p = false)
+
+Rcpp::NumericVector qlaplace(const Rcpp::NumericVector& p, const double mu,
+        const double b, const bool lower_tail = true, const bool log_p = false)
+
+Rcpp::NumericVector rlaplace(const int n, const double mu, const double b,
+        const bool lower_tail = true, const bool log_p = false)
+```
+
+Where
+
+  - `x` and `q` are quantiles (either a single value or a vector depending)
+  - `p` is a single probability or a vector of probabilities
+  - `n` is the numer of observations to draw
+  - `mu` is the location parameter
+  - `b` is the scale parameter
   - `log_p` is a `bool` or `int` (the default is `false`/0); if `true` (or > 0), the probabilities are given as $\log(p)$
   - `lower_tail` is a `bool` or `int`; if `true` (or > 0), the probabilities are $P[X \leq x]$, otherwise, $P[X > x]$.
 

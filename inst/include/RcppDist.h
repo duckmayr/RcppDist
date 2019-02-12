@@ -31,6 +31,7 @@
 
 #include <4beta.h>
 #include <lst.h>
+#include <laplace.h>
 #include <truncnorm.h>
 #include <trunct.h>
 #include <trunclst.h>

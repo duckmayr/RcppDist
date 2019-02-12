@@ -16,6 +16,7 @@
 #' RcppDist provides functions for the following distributions:
 #' \itemize{
 #'   \item The four parameter beta distribution
+#'   \item The Laplace distribution
 #'   \item The location-scale t distribution
 #'   \item The truncated normal distribution
 #'   \item The truncated t distribution

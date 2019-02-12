@@ -174,6 +174,22 @@ test_qtri_log <- function(x, a, b, c) {
     .Call('_RcppDist_test_qtri_log', PACKAGE = 'RcppDist', x, a, b, c)
 }
 
+test_dlaplace <- function(x, mu, b) {
+    .Call('_RcppDist_test_dlaplace', PACKAGE = 'RcppDist', x, mu, b)
+}
+
+test_plaplace <- function(x, mu, b) {
+    .Call('_RcppDist_test_plaplace', PACKAGE = 'RcppDist', x, mu, b)
+}
+
+test_qlaplace_nolog <- function(x, mu, b) {
+    .Call('_RcppDist_test_qlaplace_nolog', PACKAGE = 'RcppDist', x, mu, b)
+}
+
+test_qlaplace_log <- function(x, mu, b) {
+    .Call('_RcppDist_test_qlaplace_log', PACKAGE = 'RcppDist', x, mu, b)
+}
+
 test_dmvnorm <- function(x, mu, S) {
     .Call('_RcppDist_test_dmvnorm', PACKAGE = 'RcppDist', x, mu, S)
 }
