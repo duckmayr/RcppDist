@@ -35,7 +35,7 @@ install.packages("RcppDist")
 Or, you can install the development version from GitHub via
 
 ```r
-devtools::install_github("duckmayr/RcppDist")
+remotes::install_github("duckmayr/RcppDist")
 ```
 
 ## Using RcppDist
