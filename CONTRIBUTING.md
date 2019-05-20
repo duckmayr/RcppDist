@@ -1,4 +1,4 @@
-# Contributing to bggum
+# Contributing to RcppDist
 
 To contribute code to this repository, please use the following process:
   - Submit an issue describing the problem to fix or enhancement to add
