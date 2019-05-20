@@ -104,7 +104,7 @@ help("bayeslm")
 
 ## Contributing and requests
 
-The distributions above were selected for inclusion because I already had occasion to generate C++ code for use with Rcpp (or RcppArmadillo) for these distributions, but I am open to requests to expand the package to include additional distributions -- just open an issue with the requested feature, or feel free to contribute the code yourself and open a pull request.
+The distributions above were selected for inclusion because I already had occasion to generate C++ code for use with Rcpp (or RcppArmadillo) for these distributions, but I am open to requests to expand the package to include additional distributions -- just open an issue with the requested feature, or feel free to contribute the code yourself and open a pull request; before contributing, please consult the contributing guidelines in CONTRIBUTING.md.
 
 ## License
 
