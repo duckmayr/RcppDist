@@ -1,4 +1,5 @@
 LICENSE
+CONTRIBUTING.md
 
 ^\.travis\.yml$
 ^appveyor\.yml$
